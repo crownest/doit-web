@@ -1,27 +1,34 @@
-# Installation
+# Installation the packages
 
-**Create project**
+
+**Node.js**
 ```bash
-npm install -g create-react-app
-create-react-app doit-web
+apt-get update
+apt-get install nodejs
 ```
 
-## Steps for running the project
-
-**Get source code**
+**Npm**
 ```bash
-git clone https://github.com/crownest/doit-web.git (Use HTTPS)
-git clone git@github.com:crownest/doit-web.git     (Use SSH)
+apt-get install npm
 ```
 
-**Change directory and branch**
+**Ruby**
 ```bash
-cd doit-web
-git checkout staging
+apt-get update
+apt-get install ruby-full
 ```
 
-**Run project**
+**Sass**
 ```bash
-npm install
-npm start
+gem install sass
+```
+
+**Grunt**
+```bash
+npm install -g grunt
+```
+
+**Note**: If run npm command gives error "/usr/bin/env: node: No such file or directory"
+```bash
+ln -s /usr/bin/nodejs /usr/bin/node
 ```
