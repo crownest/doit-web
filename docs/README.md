@@ -6,5 +6,5 @@
 
 ## Development
 
-* [Sass](development/sass.md)
-* [Instalation](development/instalation.md)
+* [Installation the packages](development/installation.md)
+* [Running the project](development/running.md)
