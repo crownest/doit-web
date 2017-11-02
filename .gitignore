@@ -60,3 +60,5 @@ yarn-error.log*
 .sass-cache/
 *.css.map
 *.css
+
+package-lock.json
