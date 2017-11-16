@@ -1,5 +1,10 @@
+// Packages
 import React from 'react';
+
+// Local Modules
+import RegisterForm from '../../components/RegisterForm/index';
 import './index.css';
+
 
 export default class Register extends React.Component {
   render() {
@@ -8,34 +13,13 @@ export default class Register extends React.Component {
         <div className="row">
           <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 register-page__left">
             <div className="register-page__text">
-              <img className="logo" src="/images/logo.png" alt="logo"/>
+              <a href="/">
+                <img className="logo" src="/images/logo.png" alt="logo"/>
+              </a>
               <h1>Sign Up Now</h1>
               <p className="titleText">You can register by filling out the form.</p>
 
-              <div className="row input-group">
-                <div className="col-xs-12">
-                  <input type="email" placeholder="Email"/>
-                </div>
-             
-                <div className="col-xs-6">
-                  <input type="text" placeholder="First Name"/>
-                </div>
-                <div className="col-xs-6">
-                  <input type="text" placeholder="Last Name"/>
-                </div>
-
-                <div className="col-xs-12">
-                  <input type="password" placeholder="Password"/>
-                </div>
-             
-                <div className="col-xs-12">
-                  <input type="password" placeholder="Confirm Pasword"/>
-                </div>
-            
-                <div className="col-xs-12">
-                  <button className="signButton">Sign Up</button>
-                </div>    
-              </div>
+              <RegisterForm></RegisterForm>
 
               <p className="accountText">If you have an account <a href="#"><span>Sign In</span></a></p>
             </div>

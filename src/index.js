@@ -1,9 +1,12 @@
+// Packages
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Register from './pages/register/index.js';
-import './index.css';
+
+// Local Packages
+import AppRouter from './router'
+
 
 ReactDOM.render(
-  <Register />,
+  <AppRouter />,
   document.getElementById('root')
 );
