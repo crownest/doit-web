@@ -13,7 +13,7 @@ import {
 const api_users_url = api_url + "/users/";
 
 
-export function createUserPost(data) {
+export function createUser(data) {
   return request
     .post(api_users_url)
     .type("application/json")
@@ -33,7 +33,7 @@ export function createUserPost(data) {
         );
         setErrorForm(response)
       } else {
-        resetForm(data, "id_register_form")
+        resetForm(data, "id_register_form");
         alertify.success(
           "Your registration was successful.<br> Please verify your email address."
         );

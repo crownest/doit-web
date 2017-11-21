@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese');
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700&subset=latin-ext');
+
+#root {
+  height: 100%;
+}
+
+.login-page {
+  height: 100%;
+  width: 100%;
+
+  &> .row {
+    height: 100%;
+  }
+
+  &__left {
+    position: relative;
+    height: 100%;
+  }
+
+  &__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+
+    .logo {
+      display: inline-block;
+      position: relative;
+      left: 50%;
+      transform: translate(-50%);
+      width: 110px;
+      height: 80px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'Libre Baskerville', serif;
+      text-align: left;
+      padding-bottom: 0px;
+      margin: 20px 0px 0px 0px;
+    }
+
+    .titleText {
+      padding-top: 0px;
+      margin-top: 0px;
+      font-size: 14px;
+      font-family: 'Open Sans', sans-serif;
+      text-align: left;
+      margin: 0px 0px 30px 0px;
+    }
+    
+    .input-group {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%);
+
+      input {
+        outline: transparent;
+        width: 100%;
+        margin: 10px 0px 10px 0px;
+        padding: 7px;
+        border-radius: 5px;
+        border: solid 1px #a200eb;
+        font-family: 'Open Sans', sans-serif;
+      }
+
+      .has-error {
+        border: solid 1px #c82b2b;
+      }
+
+      .input-feedback {
+        color: #c82b2b;
+      }
+
+      .loginButton {
+        width: 100%;
+        padding: 5px;
+        color: white;
+        font-family: 'Open Sans', sans-serif;
+        background-image: linear-gradient(98deg, #ab00ef, #7200da);
+        border: 1px solid #a200eb;
+        border-radius: 5px;
+        outline: transparent;
+      }
+    }
+
+    .accountText { 
+      font-size: 12px;
+      font-family: 'Open Sans', sans-serif;
+      text-align: center;
+      margin: 100px 0px 0px 0px;
+
+      span {
+        color: #9013fe;
+        font-weight: 600;
+        font-style: italic;
+      }
+
+      a {
+        text-decoration: none;
+        outline: transparent;
+      }
+    }
+  }
+
+  &__right {
+    position: relative;
+    height: 100%;
+    background-color: #9013fe;
+  }
+
+  &__images {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+
+    img {
+      position: relative;
+      top: 0px;
+      left: 50%;
+      transform: translate(-50%);
+      width: 300px;
+      height: 520px;
+    } 
+
+    .icon-text {
+      font-size: 18px;
+      font-family: 'Libre Baskerville', serif;
+      color: white;
+      text-align: center;
+    }
+
+    .store-icon {
+      margin: 0px 0px 50px 0px;
+      a {
+        text-decoration: none;
+        outline: transparent;
+      }
+
+      .applestore {
+        width: 140px;
+        height: 40px;
+        margin: 0px 20px 0px -80px;
+      }
+
+      .playstore {
+        width: 140px;
+        height: 40px;
+      }
+    }
+  }
+
+  @media (max-width: 768px)  {
+    .login-page__left, .login-page__right {
+      height: auto;
+    }
+
+    .login-page__text {
+      position: relative;
+      top:0px;
+      left: 0px;
+      transform:translate(0);
+
+      h1, .titleText {
+        margin-left: 20px;
+      }
+
+      .accountText {
+        margin: 30px 0px 10px 0px;
+      }
+      
+      .input-group {
+        padding-left: 30px;
+      }
+    }
+
+    .login-page__images {
+      position: relative;
+      top:0px;
+      left: 0px;
+      transform:translate(0);
+      height: auto;
+    }
+  }
+}

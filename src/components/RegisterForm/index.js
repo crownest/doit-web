@@ -2,7 +2,7 @@
 import React from "react";
 
 // Local Modules
-import { createUserPost } from "../../actions/userActions";
+import { createUser } from "../../actions/userActions";
 
 
 export default class RegisterForm extends React.Component {
@@ -29,7 +29,7 @@ export default class RegisterForm extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    createUserPost(this.state);
+    createUser(this.state);
   }
 
   onReset = (e) => {
@@ -84,7 +84,7 @@ export default class RegisterForm extends React.Component {
             <div id="confirm_password_feedback" className="input-feedback"></div>
           </div>
           <div className="col-xs-12">
-            <button type="submit" className="registerButton">Sign Up</button>
+            <button type="submit" className="registerButton">Sign up</button>
           </div>
         </div>
       </form>
