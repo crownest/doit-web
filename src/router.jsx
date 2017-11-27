@@ -8,10 +8,10 @@ import {
 } from 'react-router-dom'
 
 // Pages
-import Landing from './pages/Landing/index.js';
-import Register from './pages/Register/index.js';
-import Login from './pages/Login/index.js';
-import Logout from './pages/Logout/index.js';
+import Landing from './pages/Landing/index';
+import Register from './pages/Register/index';
+import Login from './pages/Login/index';
+import Logout from './pages/Logout/index';
 
 // Local Modules
 import { isAuthentication } from "./actions/baseActions";
