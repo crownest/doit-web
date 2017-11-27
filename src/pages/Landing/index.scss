@@ -234,7 +234,7 @@
   height: 100%;
   position: relative;
   top: 100px;
-  left: 400px;
+  left: 20%;
   z-index: 2;
 
   .location-icon {
@@ -269,87 +269,78 @@
     padding: 40px 0px 0px 0px;
     color: #9b9b9b;
   }
-  
-  .name-box {
-    margin: 0px 120px 0px 0px;
-    float: left;
 
-    .first_name {
-      width: 200px;
-      border: none;
-      border-bottom-width: 1px;
-      border-bottom-style: solid;
-      border-bottom-color: #000000;
-    }
-
-    .last_name {
-      width: 200px;
-      border: none;
-      border-bottom-width: 1px;
-      border-bottom-style: solid;
-      border-bottom-color: #000000;
-    }
-  }
-  
-  .email {
-    width: 520px;
+  input {
+    width: 100%;
+    margin: 10px 0px 10px 0px;
+    padding: 7px;
+    font-family: 'Open Sans', sans-serif;
     border: none;
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: #000000;
   }
 
-  .message-box {
-    margin: 0px 50px 0px 0px;
+  textarea {
+    width: 100%;
+    height: 100px;
+    margin: 0px 10px 0px 0px;
     float: left;
-
-    .message {
-      width: 340px;
-      height: 70px;
-      margin: 0px 30px 0px 0px;
-      border: none;
-      border-bottom-width: 1px;
-      border-bottom-style: solid;
-      border-bottom-color: #000000;
-    }
+    border: none;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
   }
 
   .landingButton {
-    margin-top: 100px;
+    margin-top: 140px;
+    margin-left: 70px;
     border: 1px solid #000000;
     background-color: transparent;
     padding: 5px;
   }
 
-  .landing-footer {
-    position: absolute;
-    top: 80px;
-    left: 250px;
-    
-    p {
-      margin: 0px 0px 0px 0px;
-      font-family: 'Lato', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      text-align: left;
-      color: #000000;
-    }
+  .has-error {
+    border: solid 1px #c82b2b;
+  }
 
-    span {
-      font-weight: normal;
-      color: #4a4a6a;
-    }
+  .input-feedback {
+    color: #c82b2b;
+  }
+}
 
-    .landing-footer-date {
-      margin: -30px 0px 0px 60px;
-      color: #bd10e0;
-    }
+.landing-footer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 25px;
+  left: 25%;
+  z-index: 2;
+  position: absolute;
 
-    .landing-footer-copyright {
-      margin: 0px 0px 0px 3px;
-      font-size: 14px;
-      color: #bd10e0;
-    }
+  p {
+    margin: 0px 0px 0px 0px;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    color: #000000;
+  }
+
+  span {
+    font-weight: normal;
+    color: #4a4a6a;
+  }
+
+  .landing-footer-date {
+    margin: -30px 0px 0px 60px;
+    color: #bd10e0;
+  }
+
+  .landing-footer-copyright {
+    margin: 0px 0px 0px 3px;
+    font-size: 14px;
+    color: #bd10e0;
   }
 }
 

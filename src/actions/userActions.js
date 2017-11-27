@@ -2,15 +2,12 @@
 import {
   request,
   alertify,
-  api_url,
+  api_users_url,
   HTTP_201_CREATED,
   clearErrorForm,
   setErrorForm,
   resetForm
 } from "./baseActions";
-
-// Api
-const api_users_url = api_url + "/users/";
 
 
 export function createUser(data) {

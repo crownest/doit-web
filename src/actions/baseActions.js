@@ -4,13 +4,17 @@ const alertify = require("alertify.js");
 
 // Api
 const url = "http://127.0.0.1:8000";
-const api_url = "http://127.0.0.1:8000/v1";
+const api_url = url + "/v1";
+const api_auth_login_url = url + "/auth/login/";
+const api_users_url = api_url + "/users/";
+const api_contacts_url = api_url + "/contacts/";
+
 
 // Status Codes
-const HTTP_200_OK = 200
-const HTTP_201_CREATED = 201
-const HTTP_204_NO_CONTENT = 204
-const HTTP_400_BAD_REQUEST = 400
+const HTTP_200_OK = 200;
+const HTTP_201_CREATED = 201;
+const HTTP_204_NO_CONTENT = 204;
+const HTTP_400_BAD_REQUEST = 400;
 
 
 function setToken(auth_token) {
@@ -81,6 +85,9 @@ module.exports = {
   alertify,
   url,
   api_url,
+  api_auth_login_url,
+  api_users_url,
+  api_contacts_url,
   HTTP_200_OK,
   HTTP_201_CREATED,
   HTTP_204_NO_CONTENT,
