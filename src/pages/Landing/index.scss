@@ -1,0 +1,517 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese');
+
+.landing-page{
+  width: 100%;
+  max-width: 1840px;
+  height: 100% !important;
+  height: 100%;
+  margin: 0 auto; 
+  z-index: -1;
+
+  &:before {
+    position: absolute;
+    top:0;
+    left:0;
+    content: "";
+    background-image: linear-gradient(147deg, #ffffff, #f0f0f0);
+    z-index: 1;
+    width: 100%;
+    height: 550px;
+  }
+}
+
+.landing-header {
+  position: relative;
+  z-index: 2;
+
+  .logo {
+    width: 100px;
+    height: 78px;
+    margin: 15px 0px 0px 250px;
+  }
+
+  .links {
+    margin-top: 40px ;
+    text-decoration: none;
+    font-family: 'Times-Roman';
+    font-size: 14px;
+
+    .register-link {
+      margin: 15px 30px 0px 0px;
+      padding: 5px 15px 5px 15px;
+      border: 1px solid #7200da;
+      color: #000000;
+      text-decoration: none;
+
+      &:hover, &:focus {
+        outline: transparent;
+      }
+    }
+
+    .login-link {
+      margin: 15px 250px 0px 0px;
+      padding: 5px 25px 5px 25px;
+      border: 1px solid #7200da;
+      color: #000000;
+      text-decoration: none;
+
+      &:hover, &:focus {
+        outline: transparent;
+      }
+    }
+  }
+}
+
+.section {
+  overflow: hidden;
+}
+
+.slogan {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 0px;
+  left: 100px;
+  z-index: 2;
+
+  .slogan-text {
+    margin: 80px 0px 0px 220px;
+    padding: 7px;
+    width: 300px;
+
+    h3 {
+      font-family: "Times", sans-serif;;
+      text-align: left;
+      color: #000000;
+      font-size: 30px;
+    }
+
+    p {
+      width: 260px;
+      font-family: 'Lato', sans-serif;;
+      font-size: 16px;
+      text-align: left;
+      color: #000000;
+    }
+  }
+
+  .line {
+    height: 2px;
+    width: 40px;
+    margin: 20px 0px 20px 0px;
+    border-radius: 100px;
+    border: 1px solid #000000;
+    background-color: #000000;
+  }
+
+  .application-icon {
+    margin: 50px 0px 0px 220px;
+    width: 300px; 
+    
+    a {
+      text-decoration: none;
+      margin: 0px 10px 0px 0px;
+    
+      &:hover, &:focus {
+        outline: transparent;
+      }
+    }
+
+    img {
+      width: 100px;
+      height: 35px;
+    }
+  }
+
+  .device-splash {
+    margin: 0px 0px 0px 180px;
+    width: 330px;
+    height: 590px;
+  }
+  
+  h3 {
+    width: 230px;
+    line-height: 35px;
+  }
+}
+
+.features {
+  width: 100%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 2;
+
+  .line {
+    height: 2px;
+    width: 40px;
+    margin: 20px 0px 20px 0px;
+    border-radius: 100px;
+    border: 1px solid #000000;
+    background-color: #000000;
+  }
+
+  .features-left {
+    float: right; 
+
+    .device-task-detail {
+      img{
+        width: 350px;
+        height: 420px;
+        overflow: hidden;
+      }
+    }
+
+    .task-detail-text {
+      margin: 20px 0px 0px 0px;
+
+      p {
+        font-family: 'Lato', sans-serif;;
+        font-size: 16px;
+        text-align: left;
+        color: #000000;
+      }
+    }
+  }
+
+  .features-right {
+    float: left;
+
+    .task-list-text {
+
+      p {
+        font-family: 'Lato', sans-serif;;
+        font-size: 16px;
+        text-align: left;
+        color: #000000;
+      }
+    }
+
+    .device-task-list {
+      margin: 10px 80px 0px 0px;
+
+      img {
+        width: 330px;
+        height: 350px;
+        overflow: hidden;
+      }
+    }
+  }
+
+  h3 {
+    line-height: 35px;
+    font-family: "Times", sans-serif;;
+    text-align: left;
+    color: #000000;
+    font-size: 30px;
+
+    span {
+      position: relative;
+
+      .specific-point {
+        position: absolute;
+        top: 15px;
+        left: 0px;
+        width: 250px;
+        height: 10px;
+        border: 1px solid #f8e81c;
+        background-color: #f8e81c;
+        z-index: -1;
+      }
+    }
+  }
+
+  p {
+    width: 350px;
+  }
+}
+
+.form-contact {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 100px;
+  left: 400px;
+  z-index: 2;
+
+  .location-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0px 40px 0px 0px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 rgba(95, 92, 92, 0.5);
+
+    i {
+      font-size: 40px;
+      margin: 13px 0px 0px 12px;
+    }
+  }
+
+  h3 {
+    margin: -50px 0px 0px 80px;
+    line-height: 35px;
+    font-family: "Times", sans-serif;;
+    text-align: left;
+    color: #000000;
+    font-size: 30px;
+  }
+
+  p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    margin: 0px 0px 10px 0px;
+    padding: 40px 0px 0px 0px;
+    color: #9b9b9b;
+  }
+  
+  .name-box {
+    margin: 0px 120px 0px 0px;
+    float: left;
+
+    .first_name {
+      width: 200px;
+      border: none;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      border-bottom-color: #000000;
+    }
+
+    .last_name {
+      width: 200px;
+      border: none;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      border-bottom-color: #000000;
+    }
+  }
+  
+  .email {
+    width: 520px;
+    border: none;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+  }
+
+  .message-box {
+    margin: 0px 50px 0px 0px;
+    float: left;
+
+    .message {
+      width: 340px;
+      height: 70px;
+      margin: 0px 30px 0px 0px;
+      border: none;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      border-bottom-color: #000000;
+    }
+  }
+
+  .landingButton {
+    margin-top: 100px;
+    border: 1px solid #000000;
+    background-color: transparent;
+    padding: 5px;
+  }
+
+  .landing-footer {
+    position: absolute;
+    top: 80px;
+    left: 250px;
+    
+    p {
+      margin: 0px 0px 0px 0px;
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: left;
+      color: #000000;
+    }
+
+    span {
+      font-weight: normal;
+      color: #4a4a6a;
+    }
+
+    .landing-footer-date {
+      margin: -30px 0px 0px 60px;
+      color: #bd10e0;
+    }
+
+    .landing-footer-copyright {
+      margin: 0px 0px 0px 3px;
+      font-size: 14px;
+      color: #bd10e0;
+    }
+  }
+}
+
+._1sfQtb1VI_mhiaP2luSXxK {
+  position: absolute;
+  top: 45%;
+  right: 100px;
+
+  li {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #979797;
+    border-radius: 50%;
+    margin: 7px;
+    padding: 1px 0px 0px 1px;
+
+    a {
+      text-decoration: none;
+      width: 12px;
+      height: 12px;
+      padding: 0px;
+      
+      &._1hkNT3QcZAW61gVQtGh27Q {
+        background-color: #7200da;
+        border: 1px solid #7200da;
+        border-radius: 50%;
+      }
+
+      &:focus {
+        outline: transparent;
+      }
+
+      &:before {
+        content: "";
+        position:relative;
+        border: none;
+        display: none;
+        outline: transparent;
+        width: 0px;
+        height: 0px;
+      }
+    }
+  }
+
+  &:before {
+    content: "";
+    width: 2px;
+    height: 120px;
+    background-color: #d8d8d8;
+    border: 1px solid #d8d8d8;
+    margin: 0px 0px 0px 13px;
+    padding-top: 100px;
+  }
+
+  &:after {
+    content: "";
+    width: 2px;
+    height: 120px;
+    background-color: #d8d8d8;
+    border: 1px solid #d8d8d8;
+    margin: 0px 0px 0px 13px;
+    padding-bottom: 100px;
+  }
+}
+
+@media (min-width: 560px) and (max-width: 770px) {
+ 
+  .slogan {
+    
+    .logo {
+      margin: 15px 0px 0px 10px;
+    }
+
+    .slogan-text {
+      margin: 60px 0px 0px 10px;
+    }
+    
+    .application-icon {
+      margin: 50px 0px 0px 10px;  
+    }
+
+    .device-splash {
+      margin: -30px 0px 0px -130px;
+      width: 310px;
+      height: 540px;
+    }
+  }
+
+  .features {
+    margin: 15px 0px 0px 0px;    
+    .features-left {
+      .task-detail-text {
+        p{
+         font-size: 14px;
+        }
+      }
+
+      .device-task-detail {
+        img {
+          width: 260px;
+          height: 310px;
+        }
+      } 
+    }
+
+   .features-right {
+
+      .device-task-list {
+        margin-bottom: 20px;
+
+        img {
+          width: 230px;
+          height: 270px;
+        }
+      }
+
+      .task-list-text {
+        margin-top: -25px; 
+
+        p {
+          font-size: 14px;
+        }
+
+        .specific-point {
+          width: 230px;
+        }
+      }
+    }
+
+    p {
+      width: 250px;
+    }
+  }
+
+  .form-contact {
+    margin: -70px 0px 0px -300px;
+
+    .landing-footer {
+      position: relative;
+      top: 20px;
+      left: 200px;
+    }
+  }
+}
+
+@media (min-width: 770px) and (max-width: 1030px) {
+  .slogan {
+    position: relative;
+    top: 0px;
+    left: 0px;
+
+    .slogan-text {
+      margin: 60px 0px 0px 210px;
+    }
+
+    .device-splash {
+      margin: 0px 0px 0px 180px;
+    }
+  }
+
+  .form-contact {
+    top: 70px;
+    left: 250px;
+  }
+}

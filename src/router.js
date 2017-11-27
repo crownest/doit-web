@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'
 
 // Pages
+import Landing from './pages/Landing/index.js';
 import Register from './pages/Register/index.js';
 import Login from './pages/Login/index.js';
 import Logout from './pages/Logout/index.js';
@@ -16,18 +17,6 @@ import Logout from './pages/Logout/index.js';
 import { isAuthentication } from "./actions/baseActions";
 import './index.css';
 
-
-const Home = () => (
-  isAuthentication() ? (
-    <Redirect to="/index/"/>
-  ) : (
-    <div>
-      <h2>Doit</h2>
-      <a href='/login/'>Login</a> <br/>
-      <a href='/register/'>Register</a>
-    </div>
-  )
-)
 
 const Index = () => (
   isAuthentication() ? (
@@ -52,7 +41,7 @@ const Generic404 = () => (
 const AppRouter = () => (
   <Router>
     <Switch>
-      <Route exact path="/" component={Home}/>
+      <Route exact path="/" component={Landing}/>
       <Route path="/register/" component={Register}/>
       <Route path="/login/" component={Login}/>
       <Route path="/logout/" component={Logout}/>
