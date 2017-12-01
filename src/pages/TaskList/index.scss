@@ -11,6 +11,10 @@
     background-color: red;
   }
 
+  .logo {
+    margin: 15px 0px 0px 50px;
+  }
+
   .user {
     position: absolute;
     top: 60px;
@@ -23,6 +27,7 @@
       height: 140px;
       border: 5px solid #d4a5ff;
       border-radius: 50%;
+      overflow: hidden;
 
       img {
         display: inline-block;
@@ -71,77 +76,10 @@
       .icon-close {
         float: right;
         margin: 15px 20px 0px 0px;
-        padding: 0px;
+        padding: 1px;
         border-radius: 50%;
         background-color: #d0021b;
         color: #ffffff;
-      }
-
-      .medicine {
-        position: relative;
-        top: 15px;
-        left: 50%;
-        transform: translateX(-50%);
-        margin-bottom: 20px;
-        width: 450px;
-        height: 50px;
-        box-shadow: 0 2px 4px 0 rgba(175, 175, 175, 0.5), 0 2px 4px 0 rgba(216, 216, 216, 0.5);
-        border-bottom-width: 5px;
-        border-bottom-style: solid;
-        border-bottom-color: rgba(155, 155, 155, .5);
-
-        p {
-          float: left;
-          margin: 15px 0px 0px 20px;  
-          font-family: 'Open Sans', sans-serif;
-          font-size: 16px;
-          color: #fb684b;
-        }
-      }
-
-      .homework {
-        position: relative;
-        top: 15px;
-        left: 50%;
-        transform: translateX(-50%);
-        margin-bottom: 20px;
-        width: 450px;
-        height: 50px;
-        box-shadow: 0 2px 4px 0 rgba(175, 175, 175, 0.5), 0 2px 4px 0 rgba(216, 216, 216, 0.5);
-        border-bottom-width: 5px;
-        border-bottom-style: solid;
-        border-bottom-color: rgba(254, 166, 35, .5);
-
-        p {
-          float: left;
-          margin: 15px 0px 0px 20px;  
-          font-family: 'Open Sans', sans-serif;
-          font-size: 16px;
-          color: #fb684b;
-        }
-      }
-
-      .meeting {
-        position: relative;
-        top: 15px;
-        left: 50%;
-        bottom: 20px;
-        transform: translateX(-50%);
-        margin-bottom: 20px;
-        width: 450px;
-        height: 50px;
-        box-shadow: 0 2px 4px 0 rgba(175, 175, 175, 0.5), 0 2px 4px 0 rgba(216, 216, 216, 0.5);
-        border-bottom-width: 5px !important;
-        border-bottom-style: solid !important;
-        border-bottom-color: rgba(126, 211, 33, .5) !important;
-
-        p {
-          float: left;
-          margin: 15px 0px 0px 20px;  
-          font-family: 'Open Sans', sans-serif;
-          font-size: 16px;
-          color: #fb684b;
-        }
       }
     }
   }
@@ -165,8 +103,8 @@
       width: 90%;
 
       &__content {
-        .medicine, .homework, .meeting {
-          width: 90%;
+        .task-info {
+          width: 80%;
         }
       }
     }

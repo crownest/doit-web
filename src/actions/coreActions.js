@@ -6,7 +6,7 @@ import {
   api_contacts_url,
   HTTP_200_OK,
   HTTP_201_CREATED,
-  setToken,
+  setAuthInformations,
   clearErrorForm,
   setErrorForm,
   resetForm
@@ -31,8 +31,8 @@ export function authLogin(data) {
         setErrorForm(response)
       } else {
         resetForm(data, "id_login_form");
-        setToken(response.body.auth_token);
-        window.location = "/index/";
+        setAuthInformations(response.body.auth_token, response.body.user_id);
+        window.location = "/tasks/";
       }
     });
 }

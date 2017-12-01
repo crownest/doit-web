@@ -1,0 +1,15 @@
+* {padding: 0; margin:0; box-sizing: border-box;}
+
+
+.logo {
+  width: 100px;
+  height: 90px;
+}
+
+@media (max-width: 560px) {
+  .logo {
+    margin: 25px 20px 0px 10px;
+    width: 80px;
+    height: 70px;
+  }
+}

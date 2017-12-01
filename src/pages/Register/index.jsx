@@ -3,6 +3,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 
 // Components
+import Logo from '../../components/Logo/index';
 import RegisterForm from '../../components/RegisterForm/index';
 
 // Local Modules
@@ -14,7 +15,7 @@ export default class Register extends React.Component {
   render() {
     if (isAuthentication()) {
       return (
-        <Redirect to="/index/"/>
+        <Redirect to="/tasks/"/>
       )
     } else {
       return(
@@ -22,9 +23,7 @@ export default class Register extends React.Component {
           <div className="row">
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 register-page__left">
               <div className="register-page__text">
-                <a href="/">
-                  <img className="logo" src="/images/logo.png" alt="logo"/>
-                </a>
+                <Logo url="/"></Logo>
                 <h1>Sign Up Now</h1>
                 <p className="titleText">You can register by filling out the form</p>
 

@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700,700i,800&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese');
+
+.user {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+
+  .user-photo {
+    width: 140px;
+    height: 140px;
+    border: 5px solid #d4a5ff;
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+      display: inline-block;
+      overflow: hidden;
+      width: 130px;
+      height: 130px;
+    }
+  }
+}
+
+
+@media (max-width: 560px) {
+  .user {
+    .user-photo {
+      width: 110px;
+      height: 110px;
+
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+}

@@ -1,73 +1,93 @@
+// Packages
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
-//Components
-import AddTask from '../../components/AddTask/index.jsx';
+// Components
+import UserImage from '../../components/UserImage/index';
+import TaskCreateButton from '../../components/TaskCreateButton/index';
 
-//Objects
-import Header from '../../objects/Header/index.jsx';
+// Objects
+import Header from '../../objects/Header/index';
+import TaskListContent from '../../objects/TaskListContent/index';
+import TaskListEmptyContent from '../../objects/TaskListEmptyContent/index';
 
-//Local Moduless
-import SimpleLineIcon from 'react-simple-line-icons';
+// Local Modules
 import { Scrollbars } from 'react-custom-scrollbars';
+import { isAuthentication } from "../../actions/baseActions";
+import { retrieveUser } from "../../actions/userActions";
+import { listTask } from "../../actions/taskActions";
 import './index.css';
 
+
 export default class TaskList extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      user: {},
+      tasks: []
+    };
+  }
+
+  componentWillMount() {
+    if (isAuthentication()) {
+      listTask((body) => {
+        this.setState({
+          tasks: body
+        });
+      });
+
+      retrieveUser((body) => {
+        this.setState({
+          user: body
+        });
+      });
+    }
+  }
+
   render() {
-    return(
-      <div className="container tasklist-page">
-        <Header></Header>
-        <div className="user">
-          <figure className="user-photo">
-            <img src="/images/default-photo.png" alt="default-photo"/>
-          </figure>
-        </div>
-        <div className="tasklist-table">
-          <div className="row">
-            <div className="col-xs-12">
-              <div className="tasklist-table__header">
-                <div className="row">
-                  <div className="col-xs-12">
-                    <p className="user-name">Jackson Flowers</p>
-                    <AddTask></AddTask>
+    if (!isAuthentication()) {
+      return (
+        <Redirect to="/login/"/>
+      )
+    } else {
+      let tasklist_content = null;
+
+      if (this.state.tasks.length > 0) {
+        tasklist_content = <TaskListContent tasks={this.state.tasks}></TaskListContent>;
+      } else {
+        tasklist_content = <TaskListEmptyContent></TaskListEmptyContent>;
+      }
+
+      return(
+        <div className="container tasklist-page">
+          <Header></Header>
+          <UserImage image_src={this.state.user.image_128x128}></UserImage>
+          <div className="tasklist-table">
+            <div className="row">
+              <div className="col-xs-12">
+                <div className="tasklist-table__header">
+                  <div className="row">
+                    <div className="col-xs-12">
+                      <p className="user-name">{this.state.user.first_name} {this.state.user.last_name}</p>
+                      <TaskCreateButton></TaskCreateButton>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="tasklist-table__content">
-                <div className="row">
-                  <div className="col-xs-12">
-                    <Scrollbars style={{height: 200}}>
-                      <div className="medicine">
-                        <p>Medicine</p>
-                        <SimpleLineIcon name="close"/>
-                      </div>
-                      <div className="homework">
-                        <p>Homework</p>
-                        <SimpleLineIcon name="close"/>
-                      </div>
-                      <div className="meeting">
-                        <p>Meeting</p>
-                        <SimpleLineIcon name="close"/>
-                      </div>
-                      <div className="medicine">
-                        <p>Medicine</p>
-                        <SimpleLineIcon name="close"/>
-                      </div>
-                      <div className="homework">
-                        <p>Homework</p>
-                        <SimpleLineIcon name="close"/>
-                      </div>
-                      <div className="meeting">
-                        <p>Meeting</p>
-                        <SimpleLineIcon name="close"/>
-                      </div>
-                    </Scrollbars>
+                <div className="tasklist-table__content">
+                  <div className="row">
+                    <div className="col-xs-12">
+                      <Scrollbars style={{height: 300}}>
+                        {tasklist_content}
+                      </Scrollbars>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }

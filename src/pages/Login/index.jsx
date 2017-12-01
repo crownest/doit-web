@@ -3,6 +3,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 
 // Components
+import Logo from '../../components/Logo/index';
 import LoginForm from '../../components/LoginForm/index';
 
 // Local Modules
@@ -14,7 +15,7 @@ export default class Login extends React.Component {
   render() {
     if (isAuthentication()) {
       return (
-        <Redirect to="/index/"/>
+        <Redirect to="/tasks/"/>
       )
     } else {
       return(
@@ -22,9 +23,7 @@ export default class Login extends React.Component {
           <div className="row">
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 login-page__left">
               <div className="login-page__text">
-                <a href="/">
-                  <img className="logo" src="/images/logo.png" alt="logo"/>
-                </a>
+                <Logo url="/"></Logo>
                 <h1>Welcome</h1>
                 <p className="titleText">Sign in continue</p>
 

@@ -3,9 +3,8 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Redirect
-} from 'react-router-dom'
+  Route
+} from 'react-router-dom';
 
 // Pages
 import Landing from './pages/Landing/index';
@@ -15,20 +14,7 @@ import Logout from './pages/Logout/index';
 import TaskList from './pages/TaskList/index';
 
 // Local Modules
-import { isAuthentication } from "./actions/baseActions";
 import './index.css';
-
-
-const Index = () => (
-  isAuthentication() ? (
-    <div>
-      <h2>Doit</h2>
-      <a href='/logout/'>Logout</a> <br/>
-    </div>
-  ) : (
-    <Redirect to="/login/"/>
-  )
-)
 
 
 const Generic404 = () => (
@@ -46,8 +32,7 @@ const AppRouter = () => (
       <Route path="/register/" component={Register}/>
       <Route path="/login/" component={Login}/>
       <Route path="/logout/" component={Logout}/>
-      <Route path="/index/" component={Index}/>
-      <Route path="/tasklist/" component={TaskList}/>
+      <Route path="/tasks/" component={TaskList}/>
       <Route exact path='*' component={Generic404} />
     </Switch>
   </Router>

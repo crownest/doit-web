@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { ScrollContainer, ScrollSection } from 'react-onepage-scroll';
 
 // Components
+import Logo from '../../components/Logo/index';
 import ContactForm from '../../components/ContactForm/index';
 
 //Local Moduless
@@ -15,7 +16,7 @@ export default class Landing extends React.Component {
   render() {
     if (isAuthentication()) {
       return (
-        <Redirect to="/index/"/>
+        <Redirect to="/tasks/"/>
       )
     } else {
       return(
@@ -26,7 +27,7 @@ export default class Landing extends React.Component {
                 <div className="landing-header">
                   <div className="row">
                     <div className="col-xs-6">
-                      <img className="logo" src="/images/logo.png"/>
+                      <Logo url="/"></Logo>
                     </div>
                     <div className="col-xs-6">
                       <div className="links">
