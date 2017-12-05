@@ -2,6 +2,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { ScrollContainer, ScrollSection } from 'react-onepage-scroll';
+import SimpleLineIcon from 'react-simple-line-icons';
 
 // Components
 import Logo from '../../components/Logo/index';
@@ -64,7 +65,16 @@ export default class Landing extends React.Component {
           <ScrollSection pageId={1}>
             <div className="features section">
               <div className="row">
-                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div className="col-xs-12 hidden-sm hidden-md hidden-lg">
+                  <div className="task-text">
+                    <h3>Simple, stylish, useful interface and unobtrusive colors.</h3>
+                    <div className="line"></div>
+                    <p>You're going to have to think about it everywhere, as our mothers say. You are looking for what you need and you can not find it. I think you're crazy.</p>
+                    <p>But we also think that we designed everything on a regular. You can add it to the list what you want to do.</p>
+                    <p>We thought of you in design. We think you will use it often that we do not want your eyes to get tired. We used good colors for your eyes.</p>
+                  </div>
+                </div>
+                <div className="col-lg-6 col-md-6 col-sm-6 hidden-xs">
                   <div className="features-left">
                     <figure className="device-task-detail">
                       <img src="/images/device-task-list-rotated.png"/>
@@ -76,7 +86,7 @@ export default class Landing extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div className="col-lg-6 col-md-6 col-sm-6 hidden-xs">
                   <div className="features-right">
                     <div className="task-list-text">
                       <h3>
