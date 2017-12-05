@@ -46,33 +46,33 @@ export default class ContactForm extends React.Component {
     return (
       <form id="id_contact_form" onSubmit={this.onSubmit} onReset={this.onReset}>
         <div className="row input-group">
-          <div className="col-xs-4">
-            <p>First Name</p>
+          <div className="col-sm-6 col-xs-12">
+            <p className="firstname-text">First Name</p>
             <input 
               type="text" id="id_first_name"
               className="first_name" name="first_name" 
               value={first_name} onChange={this.onChange} />
             <div id="first_name_feedback" className="input-feedback"></div>
           </div>
-          <div className="col-xs-4">
-            <p>Last Name</p>
+          <div className="col-sm-6 col-xs-12">
+            <p className="lastname-text">Last Name</p>
             <input
               type="text" id="id_last_name"
               className="last_name" name="last_name"
               value={last_name} onChange={this.onChange} />
             <div id="last_name_feedback" className="input-feedback"></div>
           </div>
-          <div className="col-xs-8">
-            <p>Email</p>
+          <div className="col-lg-12 col-sm-8 col-xs-12">
+            <p className="email-text">Email</p>
             <input 
               type="email" id="id_email"
               className="email" name="email"
               value={email} onChange={this.onChange} />
             <div id="email_feedback" className="input-feedback"></div>
           </div>
-          <div className="col-xs-6">
+          <div className="col-sm-6 col-xs-12">
             <div className="message-box">
-              <p>Message</p>
+              <p className="message-text">Message</p>
               <textarea
                 id="id_message" className="message" name="message"
                 value={message} onChange={this.onChange}>
@@ -80,7 +80,7 @@ export default class ContactForm extends React.Component {
               <div id="message_feedback" className="input-feedback"></div>
             </div>
           </div>
-          <div className="col-xs-2">
+          <div className="col-sm-2 col-xs-12">
             <button className="landingButton">SEND</button>
           </div>
         </div>

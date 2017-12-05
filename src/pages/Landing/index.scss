@@ -34,12 +34,17 @@
 
   .links {
     margin-top: 40px ;
+    float: right;
     text-decoration: none;
     font-family: 'Times-Roman';
     font-size: 14px;
 
+    a {
+      text-decoration: none;
+    }
+
     .register-link {
-      margin: 15px 30px 0px 0px;
+      position: relative;
       padding: 5px 15px 5px 15px;
       border: 1px solid #7200da;
       color: #000000;
@@ -51,7 +56,8 @@
     }
 
     .login-link {
-      margin: 15px 250px 0px 0px;
+      position: relative;
+      margin: 0px 100px 0px 40px;
       padding: 5px 25px 5px 25px;
       border: 1px solid #7200da;
       color: #000000;
@@ -72,8 +78,9 @@
   width: 100%;
   height: 100%;
   position: relative;
-  top: 0px;
-  left: 100px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2;
 
   .slogan-text {
@@ -215,7 +222,7 @@
         position: absolute;
         top: 15px;
         left: 0px;
-        width: 250px;
+        width: 200px;
         height: 10px;
         border: 1px solid #f8e81c;
         background-color: #f8e81c;
@@ -233,7 +240,7 @@
   width: 100%;
   height: 100%;
   position: relative;
-  top: 100px;
+  top: 80px;
   left: 20%;
   z-index: 2;
 
@@ -265,13 +272,12 @@
     font-size: 14px;
     font-weight: bold;
     text-align: left;
-    margin: 0px 0px 10px 0px;
-    padding: 40px 0px 0px 0px;
+    margin: 30px 0px 10px 0px;
     color: #9b9b9b;
   }
 
   input {
-    width: 100%;
+    width: 60%;
     margin: 10px 0px 10px 0px;
     padding: 7px;
     font-family: 'Open Sans', sans-serif;
@@ -286,7 +292,7 @@
   }
 
   textarea {
-    width: 100%;
+    width: 80%;
     height: 100px;
     margin: 0px 10px 0px 0px;
     float: left;
@@ -300,12 +306,32 @@
     }
   }
 
+  .lastname-text {
+    margin-left: -130px;
+  }
+
+  .last_name {
+    margin-left: -130px;
+  }
+
+  .email {
+    width: 96%;
+  }
+
   .landingButton {
     margin-top: 140px;
-    margin-left: 70px;
+    margin-left: -25px;
     border: 1px solid #000000;
     background-color: transparent;
     padding: 5px;
+  }
+
+ #last_name_feedback {
+    margin: 0px 0px 0px -150px; 
+  }
+
+  #message_feedback {
+    margin: 115px 0px 0px 0px;
   }
 
   .has-error {
@@ -321,7 +347,7 @@
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 25px;
+  top: 60px;
   left: 25%;
   z-index: 2;
 
@@ -340,7 +366,7 @@
   }
 
   .landing-footer-date {
-    margin: -30px 0px 0px 60px;
+    margin: 0px 0px 0px 60px;
     color: #bd10e0;
   }
 
@@ -413,20 +439,205 @@
   }
 }
 
-@media (min-width: 560px) and (max-width: 770px) {
- 
+@media (max-width: 557px) {
+  .landing-page {
+    &:before{
+      content:"";
+      height: 350px;
+    }
+  }
+  
+  .landing-header {
+    .logo {
+      width: 80px;
+      height: 60px;
+      margin: 20px 0px 0px 20px;
+    }
+
+    .links {
+      a {
+        float: left;
+      }
+
+      .register-link {
+        padding: 5px 5px 5px 5px;
+      }
+
+      .login-link {
+        padding: 5px 10px 5px 10px;
+        margin: 0px 20px 0px 10px;
+      }
+    }
+  }
+
   .slogan {
+    .slogan-text {
+      margin: 70px 0px 0px 0px;
+      width: 130px;
+      
+      h3 {
+        font-size: 20px;
+      }
+
+      .line {
+        margin: 10px 0px 10px 0px
+      }
+
+      p {
+        width: 150px;
+        font-size: 12px;
+      }
+    }
+
+    .application-icon {
+      margin: 0px 0px 0px 10px;
+      width: 200px;
+
+      img {
+        width: 70px;
+        height: 25px; 
+      }
+    }
+
+    .device-splash {
+      margin: -250px 0px 0px 135px;
+      width: 180px;
+      height: 320px;
+    }
+  }
+
+  .features {
+    .task-text {
+      width: 90%;
+
+      h3 {
+        margin: 0px 0px 0px 20px;
+      }
+
+      .line {
+        margin: 20px 0px 20px 20px;
+      }
+
+      p {
+        margin: 10px 0px 0px 20px;
+        width: 90%;
+      }
+
+    }
+  }
+
+  .form-contact {
+    position: relative;
+    top: 15px;
+    left: 10px;
+
+    .location-icon {
+      width: 40px;
+      height: 40px;
+
+      i {
+        font-size: 20px;
+        margin: 12px 0px 0px 11px;
+      }
+    }
+
+    h3 {
+      margin: -35px 0px 0px 60px;
+      font-size: 25px;
+    }
+
+    p {
+      margin: 5px 0px 10px 0px;
+    }
+ 
+    input {
+      width: 85%;
+      margin: -20px 0px 0px 0px;
+    }
+
+    .lastname-text {
+      margin-left: 0px;
+    }
+
+    .last_name {
+      margin-left: 0px;
+    }
     
+    .email {
+      width: 85%;
+    }
+
+    textarea {
+      width: 85%;
+      margin: -10px 0px 0px 0px;
+    }
+
+    .landingButton {
+      width: 85%;
+      margin: 15px 0px 0px 0px;
+    }
+
+    #last_name_feedback {
+      margin: 0px 0px 0px 0px; 
+    }
+
+
+    #message_feedback {
+      margin: 100px 0px 0px 0px;
+    }
+
+    .landing-footer {
+      position: relative;
+      top: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0px 0px 0px 85px;
+
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+
+
+  ._1sfQtb1VI_mhiaP2luSXxK {
+    position:absolute;
+    right: 0px;
+  }
+}
+
+
+@media (min-width: 560px) and (max-width: 770px) {
+  .landing-page {
+    &:before{
+      content:"";
+      height: 450px;
+    }
+  }
+
+  .landing-header {
     .logo {
       margin: 15px 0px 0px 10px;
     }
 
+    .links {
+      a{
+        text-decoration: none;
+      }
+
+      .login-link {
+        margin: 0px 130px 0px 30px;
+      }
+    }
+  }
+
+  .slogan {
     .slogan-text {
       margin: 60px 0px 0px 10px;
     }
     
     .application-icon {
-      margin: 50px 0px 0px 10px;  
+      margin: 30px 0px 0px 10px;  
     }
 
     .device-splash {
@@ -437,7 +648,8 @@
   }
 
   .features {
-    margin: 15px 0px 0px 0px;    
+    margin: 15px 0px 0px 0px;
+
     .features-left {
       .task-detail-text {
         p{
@@ -454,7 +666,6 @@
     }
 
    .features-right {
-
       .device-task-list {
         margin-bottom: 20px;
 
@@ -470,10 +681,6 @@
         p {
           font-size: 14px;
         }
-
-        .specific-point {
-          width: 230px;
-        }
       }
     }
 
@@ -483,7 +690,19 @@
   }
 
   .form-contact {
-    margin: -70px 0px 0px -300px;
+    margin: -70px 0px 0px -60px;
+
+    p {
+      margin: 20px 0px -5px 0px;
+    }
+
+    .message-text {
+      margin: 17px 0px 5px 0px;
+    }
+
+    .landingButton {
+      margin-top: 125px;
+    }
 
     .landing-footer {
       position: relative;
@@ -491,14 +710,15 @@
       left: 200px;
     }
   }
+
+  ._1sfQtb1VI_mhiaP2luSXxK {
+    position:absolute;
+    right: 50px;
+  }
 }
 
 @media (min-width: 770px) and (max-width: 1030px) {
   .slogan {
-    position: relative;
-    top: 0px;
-    left: 0px;
-
     .slogan-text {
       margin: 60px 0px 0px 210px;
     }
@@ -509,7 +729,54 @@
   }
 
   .form-contact {
-    top: 70px;
-    left: 250px;
+    left: 150px;
+  }
+}
+
+@media (min-width: 1030px) {
+  .landing-header {
+    .links {
+      .login-link {
+        margin: 0px 180px 0px 50px;
+      }
+    }
+  }
+
+  .slogan {
+    .slogan-text {
+      margin: 120px 0px 0px 220px;
+    }
+
+    .device-splash {
+       margin: 20px 0px 0px 150px;
+    }
+  }
+
+  .form-contact {
+    margin: 10px 0px 0px 0px;
+
+    input {
+      width: 70%;
+    }
+
+    .lastname-text {
+      margin-left: -65px;
+    }
+
+    .last_name {
+      margin-left: -65px; 
+    }
+
+    .email {
+      width: 78%;
+    }
+
+    textarea {
+      width: 90%;
+    }
+
+    .landingButton {
+      margin-left: 60px;
+    }
   }
 }
