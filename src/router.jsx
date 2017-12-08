@@ -12,6 +12,7 @@ import Register from './pages/Register/index';
 import Login from './pages/Login/index';
 import Logout from './pages/Logout/index';
 import TaskList from './pages/TaskList/index';
+import Settings from './pages/Settings/index';
 
 // Local Modules
 import './index.css';
@@ -33,6 +34,7 @@ const AppRouter = () => (
       <Route path="/login/" component={Login}/>
       <Route path="/logout/" component={Logout}/>
       <Route path="/tasks/" component={TaskList}/>
+      <Route path="/settings/" component={Settings}/>
       <Route exact path='*' component={Generic404} />
     </Switch>
   </Router>

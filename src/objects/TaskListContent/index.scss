@@ -35,3 +35,10 @@
   border-bottom-style: solid !important;
   border-bottom-color: rgba(126, 211, 33, .5) !important;
 }
+
+
+@media (max-width: 560px) {
+  .task-info {
+    width: 80%;
+  }
+}

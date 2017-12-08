@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700,700i,800&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese');
 
-.tasklist-page {
+.settings-page {
   position: relative;
   width: 100%;
   height: 100%;
@@ -15,7 +15,7 @@
     margin: 25px 20px 0px 10px;
   }
 
-  .tasklist-table {
+  .settings-table {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -27,7 +27,7 @@
     box-shadow: 0 2px 4px 0 rgba(174, 174, 174, 0.5);
 
     &__header {
-      padding: 20px;
+      padding: 20px 0px 0px 0px;
       border-bottom-width: 1px;
       border-bottom-style: solid;
       border-bottom-color: rgba(208, 168, 243, .23);
@@ -39,14 +39,35 @@
         text-align: center;
         color: #000000;
       }
+
+      .header-title {
+        padding: 0px 0px 0px 20px;
+        height: 40px;
+        font-family: OpenSans;
+        font-size: 36px;
+        font-weight: bold;
+        text-align: left;
+        color: #bcb5be;
+      }
     }
 
     &__content {
-      .row {
-        .col-xs-12>div {
-          div:nth-child(3) {
-            border: 1px solid #d8d8d8; 
-          }
+
+      .link-div {
+        padding: 20px 0px 0px 20px;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: rgba(208, 168, 243, .23);
+        width: 600px;
+        height: 71px;
+
+        .link{
+          width: 197px;
+          height: 27px;
+          font-family: OpenSans;
+          font-size: 20px;
+          text-align: left;
+          color: #4a4a4a;
         }
       }
     }
@@ -54,8 +75,8 @@
 }
 
 @media (max-width: 560px) {
-  .tasklist-page{
-    .tasklist-table {
+  .settings-page{
+    .settings-table {
       width: 90%;
     }
   }

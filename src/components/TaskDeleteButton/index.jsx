@@ -4,6 +4,7 @@ import SimpleLineIcon from 'react-simple-line-icons';
 
 // Local Modules
 import { deleteTask } from "../../actions/taskActions";
+import "./index.css"
 
 
 export default class TaskDeleteButton extends React.Component {
