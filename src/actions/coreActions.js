@@ -25,9 +25,7 @@ export function authLogin(data) {
     .end(function(error, response) {
       if (error || response.statusCode !== HTTP_200_OK) {
         clearErrorForm(data);
-        alertify.error(
-          "Please correct the errors and try again!<br>",
-        );
+        alertify.error("Please correct the errors and try again!");
         setErrorForm(response)
       } else {
         resetForm(data, "id_login_form");
@@ -52,15 +50,11 @@ export function createContact(data) {
     .end(function(error, response) {
       if (error || response.statusCode !== HTTP_201_CREATED) {
         clearErrorForm(data);
-        alertify.error(
-          "Please correct the errors and try again!<br>",
-        );
+        alertify.error("Please correct the errors and try again.");
         setErrorForm(response)
       } else {
         resetForm(data, "id_contact_form");
-        alertify.success(
-          "Your message was successfully sent."
-        );
+        alertify.success("Your message was successfully sent.");
       }
     });
 }
