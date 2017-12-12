@@ -1,6 +1,6 @@
 {
   "name": "doit-web",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "alertify.js": "^1.0.12",
@@ -14,7 +14,8 @@
     "react-scripts": "1.0.17",
     "react-simple-line-icons": "^1.0.8",
     "save": "^2.3.2",
-    "superagent": "^3.8.1"
+    "superagent": "^3.8.1",
+    "webpack": "^3.10.0"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
