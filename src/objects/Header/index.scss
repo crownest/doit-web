@@ -8,12 +8,21 @@
   .header-icons {
     float: right;
     color: #ffffff;
+    padding-right: 10px;
+
+    .icon-settings {
+      margin: 50px 0px 0px 35px;
+    }
+
+    .icon-logout {
+      margin: -23px 0px 0px 75px;
+    }
 
     .line {
       width: 1px;
       height: 30px;
       background-color: #ffffff;
-      margin: -25px 0px 0px 30px;
+      margin: -25px 0px 0px 65px;
     }
 
     .login-button {
@@ -33,7 +42,7 @@
     .header-icons {
 
       .icon-logout {
-        margin: -23px 10px 0px 45px;
+        margin: -23px 10px 0px 75px;
       }
     }
   }
