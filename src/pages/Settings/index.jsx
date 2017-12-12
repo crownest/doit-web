@@ -8,9 +8,11 @@ import UserImage from '../../components/UserImage/index';
 // Objects
 import Header from '../../objects/Header/index';
 
-// Local Modules
+// Actions
 import { isAuthentication } from "../../actions/baseActions";
 import { retrieveUser } from "../../actions/userActions";
+
+// Local Modules
 import './index.css';
 
 

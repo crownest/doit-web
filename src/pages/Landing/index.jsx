@@ -8,8 +8,10 @@ import SimpleLineIcon from 'react-simple-line-icons';
 import Logo from '../../components/Logo/index';
 import ContactForm from '../../components/ContactForm/index';
 
-//Local Moduless
+// Actions
 import { isAuthentication } from "../../actions/baseActions";
+
+// Local Modules
 import './index.css';
 
 

@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// Local Moduless
+// Local Modules
 import './index.css';
 
 

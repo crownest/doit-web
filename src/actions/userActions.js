@@ -81,3 +81,24 @@ export function changePassword(data) {
       }
     });
 }
+
+
+export function forgotPassword(data) {
+  return request
+    .post(api_users_url + 'password/forgot/')
+    .type("application/json")
+    .accept("application/json")
+    .send({
+      email: data["email"],
+    })
+    .end(function(error, response) {
+      if (error || response.statusCode !== HTTP_200_OK) {
+        clearErrorForm(data);
+        alertify.error("Please correct the errors and try again.");
+        setErrorForm(response)
+      } else {
+        resetForm(data, "id_forgot_password_form");
+        alertify.success("We sent you a mail.<br>Please check your email address.");
+      }
+    });
+}

@@ -10,6 +10,7 @@ import {
 import Landing from './pages/Landing/index';
 import Register from './pages/Register/index';
 import Login from './pages/Login/index';
+import ForgotPassword from './pages/ForgotPassword/index';
 import Logout from './pages/Logout/index';
 import TaskList from './pages/TaskList/index';
 import Settings from './pages/Settings/index';
@@ -33,6 +34,7 @@ const AppRouter = () => (
       <Route exact path="/" component={Landing} />
       <Route path="/register/" component={Register} />
       <Route path="/login/" component={Login} />
+      <Route path="/forgot/password/" component={ForgotPassword} />
       <Route path="/logout/" component={Logout} />
       <Route path="/tasks/" component={TaskList} />
       <Switch>

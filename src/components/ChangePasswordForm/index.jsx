@@ -1,8 +1,10 @@
 // Packages
 import React from "react";
 
-// Local Modules
+// Actions
 import { changePassword } from "../../actions/userActions";
+
+// Local Modules
 import './index.css'
 
 

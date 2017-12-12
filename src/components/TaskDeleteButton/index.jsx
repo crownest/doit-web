@@ -2,8 +2,10 @@
 import React from 'react';
 import SimpleLineIcon from 'react-simple-line-icons';
 
-// Local Modules
+// Actions
 import { deleteTask } from "../../actions/taskActions";
+
+// Local Modules
 import "./index.css"
 
 

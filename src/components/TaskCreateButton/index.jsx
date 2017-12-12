@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-
-// Local Moduless
 import SimpleLineIcon from 'react-simple-line-icons';
+
+// Local Modules
 import './index.css';
 
 

@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SimpleLineIcon from 'react-simple-line-icons';
 
-// Local Moduless
+// Local Modules
 import './index.css';
 
 

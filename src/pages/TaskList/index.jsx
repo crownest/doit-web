@@ -1,6 +1,7 @@
 // Packages
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 // Components
 import UserImage from '../../components/UserImage/index';
@@ -11,11 +12,12 @@ import Header from '../../objects/Header/index';
 import TaskListContent from '../../objects/TaskListContent/index';
 import TaskListEmptyContent from '../../objects/TaskListEmptyContent/index';
 
-// Local Modules
-import { Scrollbars } from 'react-custom-scrollbars';
+// Actions
 import { isAuthentication } from "../../actions/baseActions";
 import { retrieveUser } from "../../actions/userActions";
 import { listTask } from "../../actions/taskActions";
+
+// Local Modules
 import './index.css';
 
 

@@ -6,8 +6,10 @@ import { Redirect } from 'react-router-dom';
 import Logo from '../../components/Logo/index';
 import LoginForm from '../../components/LoginForm/index';
 
-// Local Modules
+// Actions
 import { isAuthentication } from "../../actions/baseActions";
+
+// Local Modules
 import './index.css';
 
 
