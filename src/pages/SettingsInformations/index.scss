@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700,700i,800&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese');
+
+.settings-informations-page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  background-color: #f5f5f5;
+
+  .hh {
+    background-color: red;
+  }
+
+  .logo {
+    margin: 25px 20px 0px 10px;
+  }
+
+  .settings-table {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px 0px 30px 0px;
+    width: 600px;
+    height: 75%;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 rgba(174, 174, 174, 0.5);
+
+    &__header {
+      padding: 20px 0px 0px 0px;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      border-bottom-color: rgba(208, 168, 243, .23);
+
+      .user-name {
+        margin-top: 40px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 20px;
+        text-align: center;
+        color: #000000;
+      }
+
+      .header-title {
+        padding: 0px 0px 0px 20px;
+        height: 40px;
+        font-family: OpenSans;
+        font-size: 36px;
+        font-weight: bold;
+        text-align: left;
+        color: #bcb5be;
+      }
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .settings-informations-page {
+    .settings-table {
+      width: 90%;
+    }
+  }
+}

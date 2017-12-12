@@ -15,6 +15,7 @@ import Logout from './pages/Logout/index';
 import TaskList from './pages/TaskList/index';
 import Settings from './pages/Settings/index';
 import SettingsPassword from './pages/SettingsPassword/index';
+import SettingsInformations from './pages/SettingsInformations/index';
 
 // Local Modules
 import './index.css';
@@ -40,6 +41,7 @@ const AppRouter = () => (
       <Switch>
         <Route exact path="/settings/" component={Settings} />
         <Route path="/settings/password/" component={SettingsPassword} />
+        <Route path="/settings/informations/" component={SettingsInformations} />
         <Route exact path='*' component={Generic404} />
       </Switch>
       <Route exact path='*' component={Generic404} />

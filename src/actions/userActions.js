@@ -57,6 +57,33 @@ export function retrieveUser(onComplete) {
 }
 
 
+export function updateUser(data) {
+  var auth_informations = getAuthInformations();
+
+  return request
+    .put(api_users_url + auth_informations.user_id + '/')
+    .set("Authorization", "TOKEN " + auth_informations.auth_token)
+    .type("application/json")
+    .accept("application/json")
+    .send({
+      email: data["email"],
+      first_name: data["first_name"],
+      last_name: data["last_name"]
+    })
+    .end(function(error, response) {
+      if (error || response.statusCode !== HTTP_200_OK) {
+        clearErrorForm(data);
+        alertify.error("Please correct the errors and try again.");
+        setErrorForm(response)
+      } else {
+        resetForm(data, "id_change_password_form");
+        alertify.success("Your informations has been successfully updated.");
+        window.location = "/settings/informations/";
+      }
+    });
+}
+
+
 export function changePassword(data) {
   var auth_informations = getAuthInformations();
 

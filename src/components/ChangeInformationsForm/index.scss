@@ -1,0 +1,48 @@
+* {padding: 0; margin:0; box-sizing: border-box;}
+
+#id_change_informations_form {
+  input {
+    border: 0;
+    outline: none;
+    background: transparent;
+    border-bottom: 1px solid rgba(208, 168, 243, .23);
+    padding: 0px 0px 0px 20px;
+    width: 100%;
+    height: 60px;
+    font-family: OpenSans;
+    font-size: 20px;
+    text-align: left;
+  }
+
+  ::placeholder {
+    color: #d9d9d9;
+    opacity: 1; /* Firefox */
+  }
+
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #d9d9d9;
+  }
+
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #d9d9d9;
+  }
+
+  .change-informations-button {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  button {
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border: solid 1px #7200da;
+    outline: transparent;
+    background-color: #ffffff;
+  }
+
+  .input-feedback {
+    padding: 0px 0px 0px 20px;
+    color: #c82b2b;
+  }
+}
