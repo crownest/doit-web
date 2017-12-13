@@ -79,7 +79,10 @@ export default class TaskList extends React.Component {
                 <div className="tasklist-table__content">
                   <div className="row">
                     <div className="col-xs-12">
-                      <Scrollbars style={{height: 300}}>
+                      <Scrollbars style={{height: 290}}
+                                  thumbSize={150}
+                                  renderThumbVertical={props => < div {...props} className="thumb-vertical"/>}
+                                  renderTrackVertical={props => < div {...props} className="track-vertical"/>}>
                         {tasklist_content}
                       </Scrollbars>
                     </div>

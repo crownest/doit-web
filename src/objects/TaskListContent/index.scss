@@ -1,12 +1,10 @@
-* {padding: 0; margin:0; box-sizing: border-box;}
-
 .task-info {
   position: relative;
   top: 15px;
   left: 50%;
   transform: translateX(-50%);
   margin-bottom: 20px;
-  width: 450px;
+  width: 80.5%;
   height: 50px;
   box-shadow: 0 2px 4px 0 rgba(175, 175, 175, 0.5), 0 2px 4px 0 rgba(216, 216, 216, 0.5);
   border-bottom-width: 5px;
@@ -36,9 +34,3 @@
   border-bottom-color: rgba(126, 211, 33, .5) !important;
 }
 
-
-@media (max-width: 560px) {
-  .task-info {
-    width: 80%;
-  }
-}

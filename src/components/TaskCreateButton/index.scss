@@ -5,9 +5,10 @@
   top: 5px;
   left: 50%;
   transform: translateX(-50%);
-  width: 450px;
+  width: 85%;
   height: 50px;
   box-shadow: 0 2px 4px 0 rgba(175, 175, 175, 0.5);
+  margin-top: -5px;
 
   p {
     float: left;
@@ -23,8 +24,10 @@
     margin: 15px 20px 0px 0px;
   }
 }
-@media (max-width: 560px) {
+
+@media (max-width: 650px) {
   .add-task {
-    width: 90%;
-  } 
+    width: 88.7%;
+  }
 }
+

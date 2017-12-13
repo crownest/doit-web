@@ -1,21 +1,22 @@
-* {padding: 0; margin:0; box-sizing: border-box;}
-
 .header {
   width: 100%;
   height: 130px;
   background-image: linear-gradient(100deg, #ab00ef, #7200da);
 
+  .logo {
+    margin: 25px 0px 0px 100px;
+  }
+
   .header-icons {
+    margin: 10px 100px 0px 0px;
     float: right;
-    color: #ffffff;
-    padding-right: 10px;
 
     .icon-settings {
       margin: 50px 0px 0px 35px;
     }
 
     .icon-logout {
-      margin: -23px 0px 0px 75px;
+      margin: -23px 0px 0px 80px;
     }
 
     .line {
@@ -40,9 +41,10 @@
     }
   
     .header-icons {
+      margin: 0px 25px 0px 0px;
 
       .icon-logout {
-        margin: -23px 10px 0px 75px;
+        margin: -23px 0px 0px 75px;
       }
     }
   }

@@ -10,9 +10,9 @@ import './index.css';
 export default class SettingsButton extends React.Component {
   render() {
     return(
-      <Link to="/settings/">
+      <a href="/settings/">
         <SimpleLineIcon name="settings"/>
-      </Link>
+      </a>
     );
   }
 }
