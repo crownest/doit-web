@@ -4,7 +4,7 @@
   background-image: linear-gradient(100deg, #ab00ef, #7200da);
 
   .logo {
-    margin: 25px 0px 0px 100px;
+    margin: 25px 0px 0px 75px;
   }
 
   .header-icons {
@@ -27,21 +27,21 @@
     }
 
     .login-button {
-      margin: 50px 40px 0px 0px;
+      margin: 40px 10px 0px 0px;
     }
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 770px) {
   .header {
     .logo {
-      margin: 25px 20px 0px 10px;
-      width: 80px;
-      height: 70px;
+      margin: 25px 0px 0px 10px;
+      width: 100px;
+      height: 80px;
     }
   
     .header-icons {
-      margin: 0px 25px 0px 0px;
+      margin: 10px 25px 0px 0px;
 
       .icon-logout {
         margin: -23px 0px 0px 75px;

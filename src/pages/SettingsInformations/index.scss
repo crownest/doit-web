@@ -45,10 +45,16 @@
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 770px) {
   .settings-informations-page {
     .settings-table {
       width: 90%;
+
+      &__header {
+        .user-name {
+          margin-top: 10px;
+        }
+      }
     }
   }
 }

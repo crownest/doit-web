@@ -7,14 +7,6 @@
   padding: 0px;
   background-color: #f5f5f5;
 
-  .hh {
-    background-color: red;
-  }
-
-  .logo {
-    margin: 25px 20px 0px 10px;
-  }
-
   .forgot-password-table {
     position: relative;
     left: 50%;
@@ -44,7 +36,7 @@
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 770px) {
   .forgot-password-page {
     .forgot-password-table {
       width: 90%;

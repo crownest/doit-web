@@ -24,7 +24,7 @@
       border-bottom-color: rgba(208, 168, 243, .23);
 
       .user-name {
-        margin-top: 10px;
+        margin-top: 40px;
         font-family: 'Open Sans', sans-serif;
         font-size: 20px;
         text-align: center;
@@ -59,20 +59,14 @@
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 770px) {
   .tasklist-page{
     .tasklist-table {
       width: 90%;
-    }
-  }
-}
 
-@media (min-width: 770px) and (max-width: 1440px) {
-  .tasklist-page {
-    .tasklist-table {
       &__header {
         .user-name {
-          margin-top: 40px;
+          margin-top: 10px;
         }
       }
     }
