@@ -13,7 +13,7 @@ export default class TaskListContent extends React.Component {
     return(
       <div>
         {this.props.tasks.map(task =>
-          <div key={task.id} className="task-info">
+          <div key={task.id} className={"task-info " + (task.status + '-task')}>
             <p>{task.title}</p>
             <TaskDeleteButton task={task}></TaskDeleteButton>
           </div>
