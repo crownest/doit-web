@@ -3,14 +3,8 @@
 .icon-close {
   float: right;
   margin: 15px 20px 0px 0px;
-  padding: 0px 0px 0px 1px;
+  padding: 1px 1px 1px 1px;
   border-radius: 50%;
   background-color: #d0021b;
   color: #ffffff;
-}
-
-@media (min-width: 320px) and (max-width: 770px) {
-  .icon-close{
-    padding: 0px;
-  }
 }
