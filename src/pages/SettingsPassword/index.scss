@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700,700i,800&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese');
 
-.settings-password-page {
+.settingspassword-page {
   position: relative;
   width: 100%;
   height: 100%;
   padding: 0px;
   background-color: #f5f5f5;
 
-  .settings-table {
+  .settingspassword-table {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -46,8 +46,8 @@
 }
 
 @media (max-width: 770px) {
-  .settings-password-page {
-    .settings-table {
+  .settingspassword-page {
+    .settingspassword-table {
       width: 90%;
 
       &__header {

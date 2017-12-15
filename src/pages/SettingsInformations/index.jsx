@@ -41,28 +41,20 @@ export default class SettingsInformations extends React.Component {
       )
     } else {
       return (
-        <div className="container settings-password-page">
+        <div className="container settingsinformations-page">
           <Header></Header>
           <UserImage image_src={this.state.user.image_128x128}></UserImage>
-          <div className="settings-table">
-            <div className="row">
-              <div className="col-xs-12">
-                <div className="settings-table__header">
-                  <div className="row">
-                    <div className="col-xs-12">
-                      <p className="user-name">{this.state.user.first_name} {this.state.user.last_name}</p>
-                      <p className="header-title">INFORMATIONS</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="settings-table__content">
-                  <ChangeInformationsForm
-                    email={this.state.user.email}
-                    first_name={this.state.user.first_name}
-                    last_name={this.state.user.last_name}>
-                  </ChangeInformationsForm>
-                </div>
-              </div>
+          <div className="settingsinformations-table">
+            <div className="settingsinformations-table__header">
+              <p className="user-name">{this.state.user.first_name} {this.state.user.last_name}</p>
+              <p className="header-title">INFORMATIONS</p>
+            </div>
+            <div className="settingsinformations-table__content">
+              <ChangeInformationsForm
+                email={this.state.user.email}
+                first_name={this.state.user.first_name}
+                last_name={this.state.user.last_name}>
+              </ChangeInformationsForm>
             </div>
           </div>
         </div>

@@ -46,33 +46,25 @@ export default class Settings extends React.Component {
           <Header></Header>
           <UserImage image_src={this.state.user.image_128x128}></UserImage>
           <div className="settings-table">
-            <div className="row">
-              <div className="col-xs-12">
-                <div className="settings-table__header">
-                  <div className="row">
-                    <div className="col-xs-12">
-                      <p className="user-name">{this.state.user.first_name} {this.state.user.last_name}</p>
-                      <p className="header-title">SETTINGS</p>
-                    </div>
+            <div className="settings-table__header">
+              <p className="user-name">{this.state.user.first_name} {this.state.user.last_name}</p>
+              <p className="header-title">SETTINGS</p>
+            </div>
+            <div className="settings-table__content">
+              <div className="row">
+                <div className="col-xs-12">
+                  <div className="link-div">
+                    <Link className="link" to="/settings/informations/">Change Informations</Link>
                   </div>
                 </div>
-                <div className="settings-table__content">
-                  <div className="row">
-                    <div className="col-xs-12">
-                      <div className="link-div">
-                        <Link className="link" to="/settings/informations/">Change Informations</Link>
-                      </div>
-                    </div>
-                    <div className="col-xs-12">
-                      <div className="link-div">
-                        <Link className="link" to="/settings/password/">Change Password</Link>
-                      </div>
-                    </div>
-                    <div className="col-xs-12">
-                      <div className="link-div">
-                        <Link className="link" to="/settings/image/">Change Image</Link>
-                      </div>
-                    </div>
+                <div className="col-xs-12">
+                  <div className="link-div">
+                    <Link className="link" to="/settings/password/">Change Password</Link>
+                  </div>
+                </div>
+                <div className="col-xs-12">
+                  <div className="link-div">
+                    <Link className="link" to="/settings/image/">Change Image</Link>
                   </div>
                 </div>
               </div>

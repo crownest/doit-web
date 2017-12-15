@@ -66,29 +66,17 @@ export default class TaskList extends React.Component {
           <Header></Header>
           <UserImage image_src={this.state.user.image_128x128}></UserImage>
           <div className="tasklist-table">
-            <div className="row">
-              <div className="col-xs-12">
-                <div className="tasklist-table__header">
-                  <div className="row">
-                    <div className="col-xs-12">
-                      <p className="user-name">{this.state.user.first_name} {this.state.user.last_name}</p>
-                      <TaskCreateButton></TaskCreateButton>
-                    </div>
-                  </div>
-                </div>
-                <div className="tasklist-table__content">
-                  <div className="row">
-                    <div className="col-xs-12">
-                      <Scrollbars style={{height: 290}}
-                                  thumbSize={150}
-                                  renderThumbVertical={props => < div {...props} className="thumb-vertical"/>}
-                                  renderTrackVertical={props => < div {...props} className="track-vertical"/>}>
-                        {tasklist_content}
-                      </Scrollbars>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="tasklist-table__header">
+              <p className="user-name">{this.state.user.first_name} {this.state.user.last_name}</p>
+              <TaskCreateButton></TaskCreateButton>
+            </div>
+            <div className="tasklist-table__content">
+              <Scrollbars style={{height: 290}}
+                          thumbSize={150}
+                          renderThumbVertical={props => < div {...props} className="thumb-vertical"/>}
+                          renderTrackVertical={props => < div {...props} className="track-vertical"/>}>
+                {tasklist_content}
+              </Scrollbars>
             </div>
           </div>
         </div>
