@@ -1,6 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import SimpleLineIcon from 'react-simple-line-icons';
+import { Link } from 'react-router-dom';
 
 // Local Modules
 import './index.css';
@@ -10,9 +9,8 @@ export default class TaskCreateButton extends React.Component {
   render() {
     return(
       <div className="add-task">
-        <p>Add Task</p>
         <Link to="/tasks/create/">
-          <SimpleLineIcon name="plus"/>
+          <img src="/images/add-btn.png" className="add-btn" alt="Add Task" />
         </Link>
       </div>
     );

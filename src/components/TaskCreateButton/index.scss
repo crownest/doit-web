@@ -1,33 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700,700i,800&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese');
+* {padding: 0; margin:0; box-sizing: border-box;}
 
-.add-task {
-  position: relative;
-  top: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 85%;
-  height: 50px;
-  box-shadow: 0 2px 4px 0 rgba(175, 175, 175, 0.5);
-  margin-top: -5px;
 
-  p {
-    float: left;
-    margin: 15px 0px 0px 20px;  
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    color: #636363;
-  }
-  
-  .icon-plus {
-    float: right;
-    color: #000000;
-    margin: 15px 20px 0px 0px;
-  }
+.add-btn {
+  width: 48px;
+  height: 48px;
 }
-
-@media (max-width: 560px) {
-  .add-task {
-    width: 87.5%;
-  }
-}
-
