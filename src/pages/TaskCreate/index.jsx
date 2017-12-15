@@ -1,21 +1,23 @@
 // Packages
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 // Components
 import UserImage from '../../components/UserImage/index';
-import ChangeInformationsForm from '../../components/ChangeInformationsForm/index'
+import TaskCreateForm from '../../components/TaskCreateForm/index'
 
 // Objects
 import Header from '../../objects/Header/index';
 
-// Local Modules
+// Actions
 import { isAuthentication } from "../../actions/baseActions";
 import { retrieveUser } from "../../actions/userActions";
+
+// Local Modules
 import './index.css';
 
 
-export default class SettingsInformations extends React.Component {
+export default class TaskCreate extends React.Component {
   constructor() {
     super();
 
@@ -40,20 +42,16 @@ export default class SettingsInformations extends React.Component {
         <Redirect to="/login/"/>
       )
     } else {
-      return (
-        <div className="container settingsinformations-page">
+      return(
+        <div className="container taskcreate-page">
           <Header></Header>
           <UserImage image_src={this.state.user.image_128x128}></UserImage>
-          <div className="settingsinformations-table">
-            <div className="settingsinformations-table__header">
-              <p className="header-title">INFORMATIONS</p>
+          <div className="taskcreate-table">
+            <div className="taskcreate-table__header">
+              <p className="user-name">{this.state.user.first_name} {this.state.user.last_name}</p>
             </div>
-            <div className="settingsinformations-table__content">
-              <ChangeInformationsForm
-                email={this.state.user.email}
-                first_name={this.state.user.first_name}
-                last_name={this.state.user.last_name}>
-              </ChangeInformationsForm>
+            <div className="taskcreate-table__content">
+              <TaskCreateForm></TaskCreateForm>
             </div>
           </div>
         </div>

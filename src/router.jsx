@@ -13,6 +13,8 @@ import Login from './pages/Login/index';
 import ForgotPassword from './pages/ForgotPassword/index';
 import Logout from './pages/Logout/index';
 import TaskList from './pages/TaskList/index';
+import TaskCreate from './pages/TaskCreate/index';
+import TaskDetail from './pages/TaskDetail/index';
 import Settings from './pages/Settings/index';
 import SettingsPassword from './pages/SettingsPassword/index';
 import SettingsInformations from './pages/SettingsInformations/index';
@@ -33,17 +35,16 @@ const AppRouter = () => (
   <Router>
     <Switch>
       <Route exact path="/" component={Landing} />
-      <Route path="/register/" component={Register} />
-      <Route path="/login/" component={Login} />
-      <Route path="/forgot/password/" component={ForgotPassword} />
-      <Route path="/logout/" component={Logout} />
-      <Route path="/tasks/" component={TaskList} />
-      <Switch>
-        <Route exact path="/settings/" component={Settings} />
-        <Route path="/settings/password/" component={SettingsPassword} />
-        <Route path="/settings/informations/" component={SettingsInformations} />
-        <Route exact path='*' component={Generic404} />
-      </Switch>
+      <Route exact path="/register/" component={Register} />
+      <Route exact path="/login/" component={Login} />
+      <Route exact path="/forgot/password/" component={ForgotPassword} />
+      <Route exact path="/logout/" component={Logout} />
+      <Route exact path="/tasks/" component={TaskList} />
+      <Route exact path="/tasks/create/" component={TaskCreate} />
+      <Route exact path="/tasks/:task_id/" component={TaskDetail} />
+      <Route exact path="/settings/" component={Settings} />
+      <Route exact path="/settings/password/" component={SettingsPassword} />
+      <Route exact path="/settings/informations/" component={SettingsInformations} />
       <Route exact path='*' component={Generic404} />
     </Switch>
   </Router>

@@ -11,7 +11,7 @@ export default class TaskCreateButton extends React.Component {
     return(
       <div className="add-task">
         <p>Add Task</p>
-        <Link to="/task/create/">
+        <Link to="/tasks/create/">
           <SimpleLineIcon name="plus"/>
         </Link>
       </div>

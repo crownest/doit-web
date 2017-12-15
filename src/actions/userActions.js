@@ -50,6 +50,7 @@ export function retrieveUser(onComplete) {
     .end((error, response) => {
       if (error || response.statusCode !== HTTP_200_OK) {
         alertify.error("An unexpected error has occurred and try again later.");
+        window.location = "/logout/"
       } else {
         onComplete(response.body);
       }
@@ -57,7 +58,7 @@ export function retrieveUser(onComplete) {
 }
 
 
-export function updateUser(data) {
+export function updateUser(data, onComplete) {
   var auth_informations = getAuthInformations();
 
   return request
@@ -78,7 +79,7 @@ export function updateUser(data) {
       } else {
         resetForm(data, "id_change_password_form");
         alertify.success("Your informations has been successfully updated.");
-        window.location = "/settings/informations/";
+        onComplete(response.body);
       }
     });
 }

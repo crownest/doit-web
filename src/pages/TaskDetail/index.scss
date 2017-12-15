@@ -1,0 +1,61 @@
+ @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700,700i,800&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese');
+
+.taskdetail-page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  background-color: #f5f5f5;
+
+  .taskdetail-table {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px 0px 30px 0px;
+    width: 600px;
+    height: 75%;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 rgba(174, 174, 174, 0.5);
+
+    &__header {
+      padding: 15px;
+
+      .user-name {
+        margin-top: 40px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 20px;
+        text-align: center;
+        color: #000000;
+      }
+    }
+
+    &__content {
+      margin: 0 auto;
+      padding: 20px 30px 0px 30px;
+      width: 460px;
+      height: 75%;
+      border-radius: 10px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px 0 rgba(174, 174, 174, 0.5);
+    }
+  }
+}
+
+@media (max-width: 770px) {
+  .taskdetail-page{
+    .taskdetail-table {
+      width: 90%;
+
+      &__header {
+        .user-name {
+          margin-top: 10px;
+        }
+      }
+
+      &__content {
+        width: 90%;
+      }
+    }
+  }
+}

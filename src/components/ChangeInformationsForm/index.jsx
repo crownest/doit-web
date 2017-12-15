@@ -37,7 +37,13 @@ export default class ChangeInformationsForm extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    updateUser(this.state);
+    updateUser(this.state, (body) => {
+      this.setState({
+        email: body.email,
+        first_name: body.first_name,
+        last_name: body.last_name
+      });
+    });
   }
 
   onReset = (e) => {
