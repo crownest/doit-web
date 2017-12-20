@@ -39,11 +39,14 @@ export default class Header extends React.Component {
               <Logo url="/tasks/"></Logo>
             </div>
             <div className="col-xs-6">
-              <div className="header-icons">
-                <SettingsButton></SettingsButton>
-                <div className="line"></div>
-                <LogoutButton></LogoutButton>
-              </div>
+              <ul className="header-icons">
+                <li>
+                  <SettingsButton></SettingsButton>
+                </li>
+                <li>
+                  <LogoutButton></LogoutButton>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

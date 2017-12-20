@@ -8,22 +8,20 @@
   }
 
   .header-icons {
-    margin: 10px 100px 0px 0px;
+    margin: 40px 70px 0px 0px;
+    padding: 5px;
     float: right;
 
-    .icon-settings {
-      margin: 50px 0px 0px 35px;
-    }
+    li {
+      display: inline-block;
+      padding: 5px 10px 5px 10px;
+      border-right-width: 2px;
+      border-right-style: solid;
+      border-right-color: #ffffff; 
 
-    .icon-logout {
-      margin: -23px 0px 0px 80px;
-    }
-
-    .line {
-      width: 1px;
-      height: 30px;
-      background-color: #ffffff;
-      margin: -25px 0px 0px 65px;
+      &:last-child {
+        border: none;
+      }
     }
 
     .login-button {
@@ -38,14 +36,6 @@
       margin: 25px 0px 0px 10px;
       width: 100px;
       height: 80px;
-    }
-  
-    .header-icons {
-      margin: 10px 25px 0px 0px;
-
-      .icon-logout {
-        margin: -23px 0px 0px 75px;
-      }
     }
   }
 }

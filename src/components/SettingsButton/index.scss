@@ -1,11 +1,13 @@
-a {
+.settings-button {
+  display: block;
   text-decoration: none;
-
+  
   .icon-settings {
     color: #ffffff;
   }
 
-  &:hover, &:focus {
+  &:hover, &:focus, &:active, &:focus:active, &:hover:active {
+    text-decoration: none;
     outline: transparent;
   }
 }

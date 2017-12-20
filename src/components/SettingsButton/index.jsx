@@ -6,13 +6,12 @@ import SimpleLineIcon from 'react-simple-line-icons';
 // Local Moduless
 import './index.css';
 
-
 export default class SettingsButton extends React.Component {
   render() {
     return(
-      <a href="/settings/">
+      <Link to="/settings/" className="settings-button">
         <SimpleLineIcon name="settings"/>
-      </a>
+      </Link>
     );
   }
 }

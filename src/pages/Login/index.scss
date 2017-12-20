@@ -43,11 +43,10 @@
 
     .titleText {
       padding-top: 0px;
-      margin-top: 0px;
       font-size: 14px;
       font-family: 'Open Sans', sans-serif;
       text-align: left;
-      margin: 0px 0px 30px 0px;
+      margin: 0px 0px 30px 7px;
     }
     
     .input-group {
@@ -55,6 +54,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%);
+      width: 100%;
 
       input {
         outline: transparent;
@@ -164,8 +164,16 @@
       left: 0px;
       transform:translate(0);
 
-      h1, .titleText {
+      .logo {
+        margin: 25px 0px 0px 0px;
+      }
+
+      h1 {
         margin-left: 20px;
+      }
+
+      .titleText {
+        margin: 0px 0px 30px 30px;
       }
 
       .accountText {

@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese');
 
-* {padding: 0; margin:0; box-sizing: border-box;}
-
 .forgot-password-button {
-  font-family: OpenSans;
+  text-decoration: none;
+  margin: 5px 0px;
+  font-family: 'OpenSans', sans-serif;
   color: #4a4a4a;
 }
+
+

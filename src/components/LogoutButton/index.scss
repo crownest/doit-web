@@ -1,11 +1,13 @@
-a {
+.logout-button {
+  display: block;
   text-decoration: none;
 
   .icon-logout {
     color: #ffffff;
   }
 
-  &:hover, &:focus {
+  &:hover, &:focus, &:active, &:focus:active, &:hover:active {
+    text-decoration: none;
     outline: transparent;
   }
 }

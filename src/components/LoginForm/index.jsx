@@ -61,10 +61,10 @@ export default class RegisterForm extends React.Component {
               name="password" placeholder="Password"
               value={password} onChange={this.onChange} />
             <div id="password_feedback" className="input-feedback"></div>
-            <ForgotPasswordButton></ForgotPasswordButton>
           </div>
           <div className="col-xs-12">
             <button type="submit" className="loginButton">Sign in</button>
+            <ForgotPasswordButton></ForgotPasswordButton>
           </div>
         </div>
       </form>
