@@ -5,6 +5,7 @@ import {
   api_users_url,
   HTTP_200_OK,
   HTTP_201_CREATED,
+  HTTP_204_NO_CONTENT,
   getAuthInformations,
   clearErrorForm,
   setErrorForm,
@@ -82,6 +83,48 @@ export function updateUser(data, onComplete) {
         onComplete(response.body);
       }
     });
+}
+
+
+export function updateUserImage(data) {
+  var auth_informations = getAuthInformations();
+
+  return request
+    .post(api_users_url + auth_informations.user_id + '/image/update/')
+    .set("Authorization", "TOKEN " + auth_informations.auth_token)
+    .accept("application/json")
+    .attach('image', data["image"])
+    .end(function(error, response) {
+      if (error || response.statusCode !== HTTP_200_OK) {
+        clearErrorForm(data);
+        alertify.error("Please correct the errors and try again.");
+        setErrorForm(response)
+      } else {
+        resetForm(data, "change-image-form");
+        alertify.success("Your image has been successfully updated.");
+      }
+    });
+}
+
+
+export function deleteUserImage(user_id) {
+  alertify.confirm("Are you sure you want to delete?", function () {
+    var auth_informations = getAuthInformations();
+
+    return request
+      .del(api_users_url + auth_informations.user_id + '/image/delete/')
+      .set("Authorization", "TOKEN " + auth_informations.auth_token)
+      .type("application/json")
+      .accept("application/json")
+      .end((error, response) => {
+        if (error || response.statusCode !== HTTP_204_NO_CONTENT) {
+          alertify.error("An unexpected error has occurred and try again later.");
+        } else {
+          alertify.success("Image deleted.");
+          window.location = "/settings/image/";
+        }
+      });
+  });
 }
 
 
