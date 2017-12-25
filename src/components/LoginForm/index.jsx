@@ -11,7 +11,7 @@ import { authLogin } from "../../actions/coreActions";
 import './index.css'
 
 
-export default class RegisterForm extends React.Component {
+export default class LoginForm extends React.Component {
   constructor() {
     super();
     this.state = {

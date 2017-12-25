@@ -2,7 +2,7 @@
 import React from "react";
 
 // Actions
-import { changePassword } from "../../actions/userActions";
+import { changeUserPassword } from "../../actions/userActions";
 
 // Local Modules
 import './index.css'
@@ -30,7 +30,7 @@ export default class ChangePasswordForm extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    changePassword(this.state);
+    changeUserPassword(this.state);
   }
 
   onReset = (e) => {

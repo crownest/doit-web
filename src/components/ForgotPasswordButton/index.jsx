@@ -15,7 +15,7 @@ var styles = {
   }
 };
 
-export default class ForgotPassword extends React.Component {
+export default class ForgotPasswordButton extends React.Component {
   render() {
     return(
       <Link to="/forgot/password/" style={styles.main} className="forgot-password-button">Forgot Password?</Link>

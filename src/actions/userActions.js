@@ -128,7 +128,7 @@ export function deleteUserImage(user_id) {
 }
 
 
-export function changePassword(data) {
+export function changeUserPassword(data) {
   var auth_informations = getAuthInformations();
 
   return request
@@ -154,7 +154,7 @@ export function changePassword(data) {
 }
 
 
-export function forgotPassword(data) {
+export function forgotUserPassword(data) {
   return request
     .post(api_users_url + 'password/forgot/')
     .type("application/json")

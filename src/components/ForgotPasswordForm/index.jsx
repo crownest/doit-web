@@ -2,13 +2,13 @@
 import React from "react";
 
 // Actions
-import { forgotPassword } from "../../actions/userActions";
+import { forgotUserPassword } from "../../actions/userActions";
 
 // Local Modules
 import './index.css'
 
 
-export default class ChangePasswordForm extends React.Component {
+export default class ForgotPasswordForm extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -28,7 +28,7 @@ export default class ChangePasswordForm extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    forgotPassword(this.state);
+    forgotUserPassword(this.state);
   }
 
   onReset = (e) => {
