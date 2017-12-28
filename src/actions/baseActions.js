@@ -8,6 +8,7 @@ const api_url = url + "/v1";
 const api_auth_login_url = url + "/auth/login/";
 const api_users_url = api_url + "/users/";
 const api_tasks_url = api_url + "/tasks/";
+const api_reminders_url = api_url + "/reminders/";
 const api_contacts_url = api_url + "/contacts/";
 
 
@@ -105,6 +106,7 @@ module.exports = {
   api_auth_login_url,
   api_users_url,
   api_tasks_url,
+  api_reminders_url,
   api_contacts_url,
   HTTP_200_OK,
   HTTP_201_CREATED,

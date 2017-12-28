@@ -17,7 +17,9 @@ export default class TaskDeleteButton extends React.Component {
 
   render() {
     return(
-      <SimpleLineIcon name="close" onClick={() => this.onDelete(this.props.task.id)} />
+      <div className="task-delete-button">
+        <SimpleLineIcon name="close" onClick={() => this.onDelete(this.props.task.id)} />
+      </div>
     );
   }
 }

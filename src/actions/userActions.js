@@ -121,7 +121,7 @@ export function deleteUserImage(user_id) {
           alertify.error("An unexpected error has occurred and try again later.");
         } else {
           alertify.success("Image deleted.");
-          window.location = "/settings/image/";
+          window.location.reload();
         }
       });
   });

@@ -1,0 +1,26 @@
+* {padding: 0; margin:0; box-sizing: border-box;}
+
+.reminder-card {
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(174, 174, 174, 0.5);
+
+  .reminder-delete-button {
+    .icon-close {
+      margin: 0px 0px 10px 0px;
+    }
+  }
+}
+
+.uncompleted-reminder {
+  border-bottom-width: 5px !important;
+  border-bottom-style: solid !important;
+  border-bottom-color: rgba(254, 166, 35, .5);
+}
+
+.completed-reminder {
+  border-bottom-width: 5px !important;
+  border-bottom-style: solid !important;
+  border-bottom-color: rgba(126, 211, 33, .5) !important;
+}

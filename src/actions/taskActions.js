@@ -116,7 +116,7 @@ export function deleteTask(task_id) {
           alertify.error("An unexpected error has occurred and try again later.");
         } else {
           alertify.success("Task deleted.");
-          window.location = "/tasks/";
+          window.location.reload();
         }
       });
   });

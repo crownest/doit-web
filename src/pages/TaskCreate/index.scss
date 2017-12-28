@@ -38,6 +38,12 @@
       border-radius: 10px;
       background-color: #ffffff;
       box-shadow: 0 2px 4px 0 rgba(174, 174, 174, 0.5);
+
+      #id_task_create_form {
+        #id_description {
+          height: 150px;
+        }
+      }
     }
   }
 }

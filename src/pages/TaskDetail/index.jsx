@@ -5,9 +5,11 @@ import { Redirect } from 'react-router-dom';
 // Components
 import UserImage from '../../components/UserImage/index';
 import TaskUpdateForm from '../../components/TaskUpdateForm/index'
+import ReminderCreateForm from '../../components/ReminderCreateForm/index'
 
 // Objects
 import Header from '../../objects/Header/index';
+import ReminderListContent from '../../objects/ReminderListContent/index';
 
 // Actions
 import { isAuthentication } from "../../actions/baseActions";
@@ -27,7 +29,8 @@ export default class TaskDetail extends React.Component {
       user: {},
       task: {
         title: "",
-        description: ""
+        description: "",
+        reminders: []
       }
     };
   }
@@ -55,6 +58,14 @@ export default class TaskDetail extends React.Component {
         <Redirect to="/login/"/>
       )
     } else {
+      let reminder_content = null;
+
+      if (this.state.task.reminders.length > 0) {
+        reminder_content = <ReminderListContent reminders={this.state.task.reminders}></ReminderListContent>
+      } else {
+        reminder_content = <ReminderCreateForm task_id={this.state.task.id}></ReminderCreateForm>
+      }
+
       return(
         <div className="container taskdetail-page">
           <Header></Header>
@@ -69,6 +80,7 @@ export default class TaskDetail extends React.Component {
                 title={this.state.task.title}
                 description={this.state.task.description}>
               </TaskUpdateForm>
+              {reminder_content}
             </div>
           </div>
         </div>
