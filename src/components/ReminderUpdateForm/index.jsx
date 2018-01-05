@@ -17,19 +17,13 @@ export default class ReminderUpdateForm extends React.Component {
     super(props);
 
     this.state = {
-      date: "",
-      locale_date: ""
+      date: null,
+      locale_date: props.locale_date
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onReset = this.onReset.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      locale_date: nextProps.locale_date
-    });
   }
 
   onChange = (e) => {
@@ -50,7 +44,7 @@ export default class ReminderUpdateForm extends React.Component {
 
   onReset = (e) => {
     this.setState({
-      date: ""
+      date: null
     });
   }
 
@@ -61,8 +55,8 @@ export default class ReminderUpdateForm extends React.Component {
       <form id="reminder-update-form" onSubmit={this.onSubmit} onReset={this.onReset}>
         <div className="row">
           <div className="col-xs-12">
-            {this.props.locale_date ?
-              <p>{Moment(this.props.locale_date).format('DD.MM.YYYY HH:mm')}</p> :
+            {locale_date ?
+              <p>{Moment(locale_date).format('DD.MM.YYYY HH:mm')}</p> :
               <p>{Moment(this.props.date).format('DD.MM.YYYY HH:mmZ')}</p>
             }
             <Datetime className="reminder-datetime" dateFormat="DD.MM.YYYY" timeFormat="HH:mm"

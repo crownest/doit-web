@@ -59,7 +59,6 @@ export function updateReminder(reminder_id, data, onComplete) {
         resetForm(data, "reminder-update-form");
         alertify.success("Reminder updated.");
         onComplete(response.body);
-        window.location.reload();
       }
     });
 }

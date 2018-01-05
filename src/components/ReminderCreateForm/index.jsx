@@ -18,7 +18,7 @@ export default class ReminderCreateForm extends React.Component {
 
     this.state = {
       task: "",
-      date: ""
+      date: null
     };
 
     this.onChange = this.onChange.bind(this);
@@ -46,7 +46,7 @@ export default class ReminderCreateForm extends React.Component {
   onReset = (e) => {
     this.setState({
       task: "",
-      date: ""
+      date: null
     });
   }
 
