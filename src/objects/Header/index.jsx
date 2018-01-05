@@ -3,6 +3,7 @@ import React from 'react';
 
 // Components
 import Logo from '../../components/Logo/index';
+import BackendButton from '../../components/BackendButton/index';
 import SettingsButton from '../../components/SettingsButton/index';
 import LogoutButton from '../../components/LogoutButton/index';
 import LoginButton from '../../components/LoginButton/index';
@@ -40,6 +41,9 @@ export default class Header extends React.Component {
             </div>
             <div className="col-xs-6">
               <ul className="header-icons">
+                <li>
+                  <BackendButton></BackendButton>
+                </li>
                 <li>
                   <SettingsButton></SettingsButton>
                 </li>

@@ -1,0 +1,15 @@
+* {padding: 0; margin:0; box-sizing: border-box;}
+
+.notebook-button {
+  display: block;
+  text-decoration: none;
+  
+  .icon-notebook {
+    color: #ffffff;
+  }
+
+  &:hover, &:focus, &:active, &:focus:active, &:hover:active {
+    text-decoration: none;
+    outline: transparent;
+  }
+}

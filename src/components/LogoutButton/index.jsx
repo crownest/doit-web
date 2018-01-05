@@ -6,6 +6,7 @@ import SimpleLineIcon from 'react-simple-line-icons';
 // Local Modules
 import './index.css';
 
+
 export default class LogoutButton extends React.Component {
   render() {
     return(
