@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700,700i,800&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese');
+
+.generic404-page {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(100deg, #ab00ef, #7200da);
+
+  .logo {
+    display: block;
+    margin: 50px auto;
+    width: 200px;
+    height: 160px;
+  }
+
+  &__content {
+    text-align: center;
+
+    p {
+      font-size: 60px;
+      color: #ffffff;
+    }
+  }
+}

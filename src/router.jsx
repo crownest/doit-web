@@ -21,17 +21,10 @@ import SettingsPassword from './pages/SettingsPassword/index';
 import SettingsInformations from './pages/SettingsInformations/index';
 import SettingsImage from './pages/SettingsImage/index';
 import SettingsContact from './pages/SettingsContact/index';
+import Generic404 from './pages/Generic404/index';
 
 // Local Modules
 import './index.css';
-
-
-const Generic404 = () => (
-  <div>
-    <h2>Doit</h2>
-    <h3>404 Not Found!</h3>
-  </div>
-)
 
 
 const LandingRedirect = () => (
