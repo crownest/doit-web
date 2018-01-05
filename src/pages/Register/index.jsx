@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 // Components
 import Logo from '../../components/Logo/index';
 import RegisterForm from '../../components/RegisterForm/index';
+import BackendButton from '../../components/BackendButton/index';
 
 // Actions
 import { isAuthentication } from "../../actions/baseActions";
@@ -37,7 +38,9 @@ export default class Register extends React.Component {
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 register-page__right">
               <div className="register-page__images">
                 <img src="/images/device-task-list.png" alt="device-task-list" />
-                <p className="icon-text">Download our mobile app</p>
+                <p className="icon-text">Coming soon our mobile app</p>
+                <BackendButton></BackendButton>
+                {/*<p className="icon-text">Download our mobile app</p>
                 <div className="store-icon">
                   <a href="#">
                     <img className="applestore" src="/images/applestore-icon.png" alt="applestore-icon" />
@@ -45,7 +48,7 @@ export default class Register extends React.Component {
                   <a href="#">
                     <img className="playstore" src="/images/playstore-icon.png" alt="playstore-icon" />
                   </a>
-                </div>
+                </div>*/}
               </div>
             </div>
           </div>

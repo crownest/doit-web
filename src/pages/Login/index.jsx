@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 // Components
 import Logo from '../../components/Logo/index';
 import LoginForm from '../../components/LoginForm/index';
+import BackendButton from '../../components/BackendButton/index';
 
 // Actions
 import { isAuthentication } from "../../actions/baseActions";
@@ -31,13 +32,15 @@ export default class Login extends React.Component {
 
                 <LoginForm></LoginForm>
 
-                <p className="accountText">Don't you have an account yet. <a href="/register/"><span>Sign up</span></a></p>
+                <p className="accountText">Don't you have an account yet <a href="/register/"><span>Sign up</span></a></p>
               </div>
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 login-page__right">
               <div className="login-page__images">
                 <img src="/images/device-splash.png" alt="device-splash" />
-                <p className="icon-text">Download our mobile app</p>
+                <p className="icon-text">Coming soon our mobile app</p>
+                <BackendButton></BackendButton>
+                {/*<p className="icon-text">Download our mobile app</p>
                 <div className="store-icon">
                   <a href="#">
                     <img className="applestore" src="/images/applestore-icon.png" alt="applestore-icon" />
@@ -45,7 +48,7 @@ export default class Login extends React.Component {
                   <a href="#">
                     <img className="playstore" src="/images/playstore-icon.png" alt="playstore-icon" />
                   </a>
-                </div>
+                </div>*/}
               </div>
             </div>
           </div>
