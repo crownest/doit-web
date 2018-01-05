@@ -54,6 +54,7 @@ export function createContact(data) {
         setErrorForm(response)
       } else {
         resetForm(data, "id_contact_form");
+        resetForm(data, "settings-contact-form");
         alertify.success("Your message was successfully sent.");
       }
     });

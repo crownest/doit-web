@@ -67,6 +67,11 @@ export default class Settings extends React.Component {
                     <Link className="link" to="/settings/image/">Change Image</Link>
                   </div>
                 </div>
+                <div className="col-xs-12">
+                  <div className="link-div">
+                    <Link className="link" to="/settings/contact/">Contact</Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
