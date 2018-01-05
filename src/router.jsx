@@ -2,6 +2,7 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
+  Redirect,
   Switch,
   Route
 } from 'react-router-dom';
@@ -32,10 +33,15 @@ const Generic404 = () => (
 )
 
 
+const LandingRedirect = () => (
+  <Redirect to="/login/"/>
+)
+
+
 const AppRouter = () => (
   <Router>
     <Switch>
-      <Route exact path="/" component={Landing} />
+      <Route exact path="/" component={LandingRedirect} />
       <Route exact path="/register/" component={Register} />
       <Route exact path="/login/" component={Login} />
       <Route exact path="/forgot/password/" component={ForgotPassword} />
