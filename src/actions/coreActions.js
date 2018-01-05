@@ -6,6 +6,7 @@ import {
   api_contacts_url,
   HTTP_200_OK,
   HTTP_201_CREATED,
+  HTTP_400_BAD_REQUEST,
   setAuthInformations,
   clearErrorForm,
   setErrorForm,
@@ -23,14 +24,22 @@ export function authLogin(data) {
       password: data["password"]
     })
     .end(function(error, response) {
-      if (error || response.statusCode !== HTTP_200_OK) {
-        clearErrorForm(data);
-        alertify.error("Please correct the errors and try again!");
-        setErrorForm(response)
+      if (response) {
+        if (response.statusCode === HTTP_200_OK) {
+          resetForm(data, "id_login_form");
+          setAuthInformations(response.body.auth_token, response.body.user_id);
+          window.location = "/tasks/";
+        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
+          clearErrorForm(data);
+          alertify.error("Please correct the errors and try again.");
+          setErrorForm(response);
+        } else {
+          resetForm(data, "id_login_form");
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
       } else {
         resetForm(data, "id_login_form");
-        setAuthInformations(response.body.auth_token, response.body.user_id);
-        window.location = "/tasks/";
+        alertify.error("An unexpected error has occurred and try again later.");
       }
     });
 }
@@ -48,14 +57,22 @@ export function createContact(data) {
       message: data["message"]
     })
     .end(function(error, response) {
-      if (error || response.statusCode !== HTTP_201_CREATED) {
-        clearErrorForm(data);
-        alertify.error("Please correct the errors and try again.");
-        setErrorForm(response)
+      if (response) {
+        if (response.statusCode === HTTP_201_CREATED) {
+          resetForm(data, "id_contact_form");
+          resetForm(data, "settings-contact-form");
+          alertify.success("Your message was successfully sent.");
+        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
+          clearErrorForm(data);
+          alertify.error("Please correct the errors and try again.");
+          setErrorForm(response);
+        } else {
+          resetForm(data, "id_contact_form");
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
       } else {
         resetForm(data, "id_contact_form");
-        resetForm(data, "settings-contact-form");
-        alertify.success("Your message was successfully sent.");
+        alertify.error("An unexpected error has occurred and try again later.");
       }
     });
 }

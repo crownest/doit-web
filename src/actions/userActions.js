@@ -6,6 +6,7 @@ import {
   HTTP_200_OK,
   HTTP_201_CREATED,
   HTTP_204_NO_CONTENT,
+  HTTP_400_BAD_REQUEST,
   getAuthInformations,
   clearErrorForm,
   setErrorForm,
@@ -26,15 +27,23 @@ export function createUser(data) {
       confirm_password: data["confirm_password"]
     })
     .end(function(error, response) {
-      if (error || response.statusCode !== HTTP_201_CREATED) {
-        clearErrorForm(data);
-        alertify.error("Please correct the errors and try again.");
-        setErrorForm(response)
+      if (response) {
+        if (response.statusCode === HTTP_201_CREATED) {
+          resetForm(data, "id_register_form");
+          alertify.success(
+            "Your registration was successful.<br> Please verify your email address."
+          );
+        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
+          clearErrorForm(data);
+          alertify.error("Please correct the errors and try again.");
+          setErrorForm(response);
+        } else {
+          resetForm(data, "id_register_form");
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
       } else {
         resetForm(data, "id_register_form");
-        alertify.success(
-          "Your registration was successful.<br> Please verify your email address."
-        );
+        alertify.error("An unexpected error has occurred and try again later.");
       }
     });
 }
@@ -49,11 +58,14 @@ export function retrieveUser(onComplete) {
     .type("application/json")
     .accept("application/json")
     .end((error, response) => {
-      if (error || response.statusCode !== HTTP_200_OK) {
-        alertify.error("An unexpected error has occurred and try again later.");
-        window.location = "/logout/"
+      if (response) {
+        if (response.statusCode === HTTP_200_OK) {
+          onComplete(response.body);
+        } else {
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
       } else {
-        onComplete(response.body);
+        alertify.error("An unexpected error has occurred and try again later.");
       }
     });
 }
@@ -73,14 +85,22 @@ export function updateUser(data, onComplete) {
       last_name: data["last_name"]
     })
     .end(function(error, response) {
-      if (error || response.statusCode !== HTTP_200_OK) {
-        clearErrorForm(data);
-        alertify.error("Please correct the errors and try again.");
-        setErrorForm(response)
+      if (response) {
+        if (response.statusCode === HTTP_200_OK) {
+          resetForm(data, "id_change_password_form");
+          alertify.success("Your informations has been successfully updated.");
+          onComplete(response.body);
+        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
+          clearErrorForm(data);
+          alertify.error("Please correct the errors and try again.");
+          setErrorForm(response);
+        } else {
+          resetForm(data, "id_change_password_form");
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
       } else {
         resetForm(data, "id_change_password_form");
-        alertify.success("Your informations has been successfully updated.");
-        onComplete(response.body);
+        alertify.error("An unexpected error has occurred and try again later.");
       }
     });
 }
@@ -95,13 +115,21 @@ export function updateUserImage(data) {
     .accept("application/json")
     .attach('image', data["image"])
     .end(function(error, response) {
-      if (error || response.statusCode !== HTTP_200_OK) {
-        clearErrorForm(data);
-        alertify.error("Please correct the errors and try again.");
-        setErrorForm(response)
+      if (response) {
+        if (response.statusCode === HTTP_200_OK) {
+          resetForm(data, "change-image-form");
+          alertify.success("Your image has been successfully updated.");
+        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
+          clearErrorForm(data);
+          alertify.error("Please correct the errors and try again.");
+          setErrorForm(response);
+        } else {
+          resetForm(data, "change-image-form");
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
       } else {
         resetForm(data, "change-image-form");
-        alertify.success("Your image has been successfully updated.");
+        alertify.error("An unexpected error has occurred and try again later.");
       }
     });
 }
@@ -117,11 +145,15 @@ export function deleteUserImage(user_id) {
       .type("application/json")
       .accept("application/json")
       .end((error, response) => {
-        if (error || response.statusCode !== HTTP_204_NO_CONTENT) {
-          alertify.error("An unexpected error has occurred and try again later.");
+        if (response) {
+          if (response.statusCode === HTTP_204_NO_CONTENT) {
+            alertify.success("Image deleted.");
+            window.location.reload();
+          } else {
+            alertify.error("An unexpected error has occurred and try again later.");
+          }
         } else {
-          alertify.success("Image deleted.");
-          window.location.reload();
+          alertify.error("An unexpected error has occurred and try again later.");
         }
       });
   });
@@ -142,13 +174,21 @@ export function changeUserPassword(data) {
       confirm_new_password: data["confirm_new_password"]
     })
     .end(function(error, response) {
-      if (error || response.statusCode !== HTTP_200_OK) {
-        clearErrorForm(data);
-        alertify.error("Please correct the errors and try again.");
-        setErrorForm(response)
+      if (response) {
+        if (response.statusCode === HTTP_200_OK) {
+          resetForm(data, "id_change_password_form");
+          alertify.success("Your password has been successfully changed.");
+        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
+          clearErrorForm(data);
+          alertify.error("Please correct the errors and try again.");
+          setErrorForm(response);
+        } else {
+          resetForm(data, "id_change_password_form");
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
       } else {
         resetForm(data, "id_change_password_form");
-        alertify.success("Your password has been successfully changed.");
+        alertify.error("An unexpected error has occurred and try again later.");
       }
     });
 }
@@ -163,13 +203,21 @@ export function forgotUserPassword(data) {
       email: data["email"],
     })
     .end(function(error, response) {
-      if (error || response.statusCode !== HTTP_200_OK) {
-        clearErrorForm(data);
-        alertify.error("Please correct the errors and try again.");
-        setErrorForm(response)
+      if (response) {
+        if (response.statusCode === HTTP_200_OK) {
+          resetForm(data, "id_forgot_password_form");
+          alertify.success("We sent you a mail.<br>Please check your email address.");
+        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
+          clearErrorForm(data);
+          alertify.error("Please correct the errors and try again.");
+          setErrorForm(response);
+        } else {
+          resetForm(data, "id_forgot_password_form");
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
       } else {
         resetForm(data, "id_forgot_password_form");
-        alertify.success("We sent you a mail.<br>Please check your email address.");
+        alertify.error("An unexpected error has occurred and try again later.");
       }
     });
 }

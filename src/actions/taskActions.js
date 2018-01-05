@@ -7,6 +7,7 @@ import {
   HTTP_200_OK,
   HTTP_201_CREATED,
   HTTP_204_NO_CONTENT,
+  HTTP_400_BAD_REQUEST,
   clearErrorForm,
   setErrorForm,
   resetForm
@@ -22,10 +23,14 @@ export function listTask(onComplete) {
     .type("application/json")
     .accept("application/json")
     .end((error, response) => {
-      if (error || response.statusCode !== HTTP_200_OK) {
-        alertify.error("An unexpected error has occurred and try again later.");
+      if (response) {
+        if (response.statusCode === HTTP_200_OK) {
+          onComplete(response.body);
+        } else {
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
       } else {
-        onComplete(response.body);
+        alertify.error("An unexpected error has occurred and try again later.");
       }
     });
 }
@@ -44,14 +49,22 @@ export function createTask(data) {
       description: data["description"]
     })
     .end(function(error, response) {
-      if (error || response.statusCode !== HTTP_201_CREATED) {
-        clearErrorForm(data);
-        alertify.error("Please correct the errors and try again.");
-        setErrorForm(response)
+      if (response) {
+        if (response.statusCode === HTTP_201_CREATED) {
+          resetForm(data, "id_task_create_form");
+          alertify.success("Task created.");
+          window.location = "/tasks/" + response.body.id + "/";
+        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
+          clearErrorForm(data);
+          alertify.error("Please correct the errors and try again.");
+          setErrorForm(response);
+        } else {
+          resetForm(data, "id_task_create_form");
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
       } else {
         resetForm(data, "id_task_create_form");
-        alertify.success("Task created.");
-        window.location = "/tasks/" + response.body.id + "/"
+        alertify.error("An unexpected error has occurred and try again later.");
       }
     });
 }
@@ -66,11 +79,16 @@ export function retrieveTask(task_id, onComplete) {
     .type("application/json")
     .accept("application/json")
     .end((error, response) => {
-      if (error || response.statusCode !== HTTP_200_OK) {
+      if (response) {
+        if (response.statusCode === HTTP_200_OK) {
+          onComplete(response.body);
+        } else {
+          alertify.error("An unexpected error has occurred and try again later.");
+          window.location = "/tasks/"
+        }
+      } else {
         alertify.error("An unexpected error has occurred and try again later.");
         window.location = "/tasks/"
-      } else {
-        onComplete(response.body);
       }
     });
 }
@@ -89,14 +107,22 @@ export function updateTask(task_id, data, onComplete) {
       description: data["description"]
     })
     .end(function(error, response) {
-      if (error || response.statusCode !== HTTP_200_OK) {
-        clearErrorForm(data);
-        alertify.error("Please correct the errors and try again.");
-        setErrorForm(response)
+      if (response) {
+        if (response.statusCode === HTTP_200_OK) {
+          resetForm(data, "id_task_update_form");
+          alertify.success("Task updated.");
+          onComplete(response.body);
+        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
+          clearErrorForm(data);
+          alertify.error("Please correct the errors and try again.");
+          setErrorForm(response);
+        } else {
+          resetForm(data, "id_task_update_form");
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
       } else {
         resetForm(data, "id_task_update_form");
-        alertify.success("Task updated.");
-        onComplete(response.body);
+        alertify.error("An unexpected error has occurred and try again later.");
       }
     });
 }
@@ -112,11 +138,15 @@ export function deleteTask(task_id) {
       .type("application/json")
       .accept("application/json")
       .end((error, response) => {
-        if (error || response.statusCode !== HTTP_204_NO_CONTENT) {
-          alertify.error("An unexpected error has occurred and try again later.");
+        if (response) {
+          if (response.statusCode === HTTP_204_NO_CONTENT) {
+            alertify.success("Task deleted.");
+            window.location.reload();
+          } else {
+            alertify.error("An unexpected error has occurred and try again later.");
+          }
         } else {
-          alertify.success("Task deleted.");
-          window.location.reload();
+          alertify.error("An unexpected error has occurred and try again later.");
         }
       });
   });
