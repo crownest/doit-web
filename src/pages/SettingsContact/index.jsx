@@ -49,7 +49,11 @@ export default class SettingsContact extends React.Component {
               <p className="header-title">CONTACT</p>
             </div>
             <div className="settingsinformations-table__content">
-              <SettingsContactForm></SettingsContactForm>
+              <SettingsContactForm
+                email={this.state.user.email}
+                first_name={this.state.user.first_name}
+                last_name={this.state.user.last_name}
+              ></SettingsContactForm>
             </div>
           </div>
         </div>

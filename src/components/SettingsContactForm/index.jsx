@@ -7,8 +7,9 @@ import './index.css'
 
 
 export default class SettingsContactForm extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
     this.state = {
       first_name: "",
       last_name: "",
@@ -19,6 +20,14 @@ export default class SettingsContactForm extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onReset = this.onReset.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      email: nextProps.email,
+      first_name: nextProps.first_name,
+      last_name: nextProps.last_name
+    });
   }
 
   onChange = (e) => {
@@ -34,40 +43,16 @@ export default class SettingsContactForm extends React.Component {
 
   onReset = (e) => {
     this.setState({
-      first_name: "",
-      last_name: "",
-      email: "",
       message: ""
     });
   }
 
   render() {
-    const { first_name, last_name, email, message } = this.state;
+    const { message } = this.state;
 
     return (
       <form id="settings-contact-form" onSubmit={this.onSubmit} onReset={this.onReset}>
         <div className="row">
-          <div className="col-xs-12">
-            <input
-              type="email" id="email"
-              name="email" placeholder="Email"
-              value={email} onChange={this.onChange} />
-            <div id="email_feedback" className="input-feedback"></div>
-          </div>
-          <div className="col-xs-12">
-            <input
-              type="text" id="first_name"
-              name="first_name" placeholder="First Name"
-              value={first_name} onChange={this.onChange} />
-            <div id="first_name_feedback" className="input-feedback"></div>
-          </div>
-          <div className="col-xs-12">
-            <input
-              type="text" id="last_name"
-              name="last_name" placeholder="Last Name"
-              value={last_name} onChange={this.onChange} />
-            <div id="last_name_feedback" className="input-feedback"></div>
-          </div>
           <div className="col-xs-12">
             <textarea
               id="id_message" className="message"
