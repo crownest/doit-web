@@ -49,7 +49,7 @@ export default class ReminderUpdateForm extends React.Component {
   }
 
   render() {
-    const { date, locale_date } = this.state;
+    const { locale_date } = this.state;
 
     return (
       <form id="reminder-update-form" onSubmit={this.onSubmit} onReset={this.onReset}>

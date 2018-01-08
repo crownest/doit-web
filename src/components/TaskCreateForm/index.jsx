@@ -1,6 +1,5 @@
 // Packages
 import React from "react";
-import { Redirect } from 'react-router-dom';
 import SimpleLineIcon from 'react-simple-line-icons';
 
 // Local Modules

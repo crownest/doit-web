@@ -1,6 +1,6 @@
 // Packages
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 // Components
 import UserImage from '../../components/UserImage/index';

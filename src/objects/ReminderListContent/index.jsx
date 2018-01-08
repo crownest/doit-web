@@ -1,6 +1,5 @@
 // Packages
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 // Components
 import ReminderUpdateForm from '../../components/ReminderUpdateForm/index'

@@ -1,6 +1,5 @@
 // Packages
 import React from 'react';
-import SimpleLineIcon from 'react-simple-line-icons';
 
 // Actions
 import { deleteUserImage } from "../../actions/userActions";

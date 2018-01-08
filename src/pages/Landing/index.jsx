@@ -2,14 +2,13 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { ScrollContainer, ScrollSection } from 'react-onepage-scroll';
-import SimpleLineIcon from 'react-simple-line-icons';
 
 // Components
 import Logo from '../../components/Logo/index';
 import ContactForm from '../../components/ContactForm/index';
 
 // Actions
-import { isAuthentication } from "../../actions/baseActions";
+import { url, isAuthentication } from "../../actions/baseActions";
 
 // Local Modules
 import './index.css';
@@ -48,16 +47,16 @@ export default class Landing extends React.Component {
                       <p>Doit is a reminder application. The purpose of this application to remind your works which you planed.</p>
                     </div>
                     <div className="application-icon">
-                      <a href="#">
-                        <img src="/images/playstore-icon.png"/>
+                      <a href={url}>
+                        <img src="/images/playstore-icon.png" alt="playstore-icon"/>
                       </a>
-                      <a href="#">
-                        <img src="/images/applestore-icon.png"/>
+                      <a href={url}>
+                        <img src="/images/applestore-icon.png" alt="applestore-icon"/>
                       </a>
                     </div>
                   </div>
                   <div className="col-lg-8 col-md-8 col-sm-6 col-xs-12">
-                    <img className="device-splash" src="/images/device-splash.png"/>
+                    <img className="device-splash" src="/images/device-splash.png" alt="device-splash"/>
                   </div>
                 </div>
               </div>
@@ -79,7 +78,7 @@ export default class Landing extends React.Component {
                 <div className="col-lg-6 col-md-6 col-sm-6 hidden-xs">
                   <div className="features-left">
                     <figure className="device-task-detail">
-                      <img src="/images/device-task-list-rotated.png"/>
+                      <img src="/images/device-task-list-rotated.png" alt="device-task-list-rotated"/>
                     </figure>
                     <div className="task-detail-text">
                       <h3>We searched for colors<br/>that good for your eyes.</h3>
@@ -103,7 +102,7 @@ export default class Landing extends React.Component {
                       <p>But we also think that we designed everything on a regular. You can add it to the list what you want to do.</p>
                     </div>
                     <figure className="device-task-list">
-                      <img src="/images/device-task-detail.png"/>
+                      <img src="/images/device-task-detail.png" alt="device-task-detail"/>
                     </figure>
                   </div>
                 </div>

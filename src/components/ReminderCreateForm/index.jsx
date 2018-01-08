@@ -2,7 +2,6 @@
 import React from "react";
 import Moment from 'moment';
 import Datetime from 'react-datetime';
-import { Redirect } from 'react-router-dom';
 import SimpleLineIcon from 'react-simple-line-icons';
 
 // Actions
@@ -51,8 +50,6 @@ export default class ReminderCreateForm extends React.Component {
   }
 
   render() {
-    const { task, date } = this.state;
-
     return (
       <form id="reminder-create-form" onSubmit={this.onSubmit} onReset={this.onReset}>
         <div className="row">

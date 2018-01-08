@@ -54,7 +54,7 @@ export default class ChangeImageForm extends React.Component {
   }
 
   render() {
-    const { image, image_src } = this.state;
+    const { image_src } = this.state;
 
     return(
       <form id="change-image-form" onSubmit={this.onSubmit} onReset={this.onReset}>
@@ -62,7 +62,7 @@ export default class ChangeImageForm extends React.Component {
           <UserImage image_src={image_src}></UserImage>
           <div className="overlay">
             <label htmlFor="id-image" className="change-image-label">
-              <img src="/images/change-photo.png" alt="change-photo"/>
+              <img src="/images/change-photo.png" alt="change"/>
             </label>
             <input type="file" id="id-image" name="image" onChange={this.onChange.bind(this)} />
           </div>
