@@ -27,6 +27,8 @@ export default class TaskCreate extends React.Component {
   }
 
   componentWillMount() {
+    document.title = "Task Create | Doit";
+
     if (isAuthentication()) {
       retrieveUser((body) => {
         this.setState({

@@ -32,6 +32,8 @@ export default class TaskList extends React.Component {
   }
 
   componentWillMount() {
+    document.title = "Tasks | Doit";
+
     if (isAuthentication()) {
       listTask((body) => {
         this.setState({

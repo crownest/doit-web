@@ -25,6 +25,8 @@ export default class SettingsInformations extends React.Component {
   }
 
   componentWillMount() {
+    document.title = "Change Informations | Doit";
+
     if (isAuthentication()) {
       retrieveUser((body) => {
         this.setState({

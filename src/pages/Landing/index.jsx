@@ -15,6 +15,10 @@ import './index.css';
 
 
 export default class Landing extends React.Component {
+  componentWillMount() {
+    document.title = "Landing | Doit";
+  }
+
   render() {
     if (isAuthentication()) {
       return (

@@ -15,6 +15,10 @@ import './index.css';
 
 
 export default class Login extends React.Component {
+  componentWillMount() {
+    document.title = "Login | Doit";
+  }
+
   render() {
     if (isAuthentication()) {
       return (

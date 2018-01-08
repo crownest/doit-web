@@ -26,6 +26,8 @@ export default class Settings extends React.Component {
   }
 
   componentWillMount() {
+    document.title = "Settings | Doit";
+
     if (isAuthentication()) {
       retrieveUser((body) => {
         this.setState({

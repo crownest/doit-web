@@ -16,6 +16,10 @@ import './index.css';
 
 
 export default class ForgotPassword extends React.Component {
+  componentWillMount() {
+    document.title = "Forgot Password | Doit";
+  }
+
   render() {
     if (isAuthentication()) {
       return (

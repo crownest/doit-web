@@ -27,6 +27,8 @@ export default class SettingsImage extends React.Component {
   }
 
   componentWillMount() {
+    document.title = "Change Image | Doit";
+
     if (isAuthentication()) {
       retrieveUser((body) => {
         this.setState({

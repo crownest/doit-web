@@ -27,6 +27,8 @@ export default class SettingsPassword extends React.Component {
   }
 
   componentWillMount() {
+    document.title = "Change Password | Doit";
+
     if (isAuthentication()) {
       retrieveUser((body) => {
         this.setState({

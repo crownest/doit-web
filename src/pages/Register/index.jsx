@@ -15,6 +15,10 @@ import './index.css';
 
 
 export default class Register extends React.Component {
+  componentWillMount() {
+    document.title = "Register | Doit";
+  }
+
   render() {
     if (isAuthentication()) {
       return (

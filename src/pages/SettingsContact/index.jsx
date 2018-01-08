@@ -25,6 +25,8 @@ export default class SettingsContact extends React.Component {
   }
 
   componentWillMount() {
+    document.title = "Contact | Doit";
+
     if (isAuthentication()) {
       retrieveUser((body) => {
         this.setState({

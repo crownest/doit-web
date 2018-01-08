@@ -9,6 +9,10 @@ import './index.css';
 
 
 export default class Generic404 extends React.Component {
+  componentWillMount() {
+    document.title = "404 | Doit";
+  }
+
   render() {
     return (
       <div className="generic404-page">

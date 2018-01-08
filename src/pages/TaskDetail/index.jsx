@@ -36,6 +36,8 @@ export default class TaskDetail extends React.Component {
   }
 
   componentWillMount() {
+    document.title = "Task Detail | Doit";
+
     if (isAuthentication()) {
       retrieveUser((body) => {
         this.setState({
