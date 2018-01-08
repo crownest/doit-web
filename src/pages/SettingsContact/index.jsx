@@ -41,14 +41,14 @@ export default class SettingsContact extends React.Component {
       )
     } else {
       return (
-        <div className="container settingsinformations-page">
+        <div className="container settingscontact-page">
           <Header></Header>
           <UserImage image_src={this.state.user.image_128x128}></UserImage>
-          <div className="settingsinformations-table">
-            <div className="settingsinformations-table__header">
+          <div className="settingscontact-table">
+            <div className="settingscontact-table__header">
               <p className="header-title">CONTACT</p>
             </div>
-            <div className="settingsinformations-table__content">
+            <div className="settingscontact-table__content">
               <SettingsContactForm
                 email={this.state.user.email}
                 first_name={this.state.user.first_name}
