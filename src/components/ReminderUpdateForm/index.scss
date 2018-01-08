@@ -7,7 +7,7 @@
   box-shadow: 0 2px 4px 0 rgba(174, 174, 174, 0.5);
 
   .reminder-datetime {
-    width: 95%;
+    width: 90%;
   }
 
   .reminder-datetime-input {
@@ -24,7 +24,8 @@
 
   .reminder-update-button {
     border: 0;
-    outline: transparent;
+    background-color: transparent;
+    outline: none;
     float: right;
     margin-top: -30px;
     z-index: 2;
