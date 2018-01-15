@@ -1,15 +1,21 @@
 .task-info {
   position: relative;
+  display:block;
+  overflow:auto;
   top: 15px;
   left: 50%;
   transform: translateX(-50%);
   margin-bottom: 20px;
   width: 80.5%;
-  height: 50px;
+  min-height: 50px;
   box-shadow: 0 2px 4px 0 rgba(175, 175, 175, 0.5), 0 2px 4px 0 rgba(216, 216, 216, 0.5);
   border-bottom-width: 5px;
   border-bottom-style: solid;
   border-bottom-color: rgba(155, 155, 155, .5);
+
+  .task-content-link {
+    width: 80%;
+  }
 
   a {
     float: left;

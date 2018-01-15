@@ -15,7 +15,9 @@ export default class TaskListContent extends React.Component {
       <div>
         {this.props.tasks.map(task =>
           <div key={task.id} className={"task-info " + (task.status + '-task')}>
-            <Link to={"/tasks/" + (task.id + '/')}>{task.title}</Link>
+            <div className="task-content-link">
+              <Link to={"/tasks/" + (task.id + '/')}>{task.title}</Link>
+            </div>
             <TaskDeleteButton task={task}></TaskDeleteButton>
           </div>
         )}
