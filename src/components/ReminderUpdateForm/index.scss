@@ -8,6 +8,21 @@
 
   .reminder-datetime {
     width: 90%;
+
+    .rdtPicker {
+      padding: 0px;
+      border: 0;
+
+      .rdtDays {
+        background-color: #fff;
+        margin: -300px 0px 0px 10px;
+      }
+
+      .rdtTime {
+        background-color: #fff;
+        margin: -180px 0px 0px 10px;
+      }
+    }
   }
 
   .reminder-datetime-input {
