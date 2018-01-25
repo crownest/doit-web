@@ -2,6 +2,11 @@
 import React from "react";
 
 // Actions
+import {
+  alertify,
+  HTTP_201_CREATED,
+  HTTP_400_BAD_REQUEST
+} from "../../actions/baseActions";
 import { createContact } from "../../actions/coreActions";
 
 
@@ -12,11 +17,13 @@ export default class ContactForm extends React.Component {
       first_name: "",
       last_name: "",
       email: "",
-      message: ""
+      message: "",
+      errors: {}
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.setError = this.setError.bind(this);
     this.onReset = this.onReset.bind(this);
   }
 
@@ -28,7 +35,40 @@ export default class ContactForm extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    createContact(this.state);
+    var data = {
+      first_name: this.state.first_name,
+      last_name: this.state.last_name,
+      email: this.state.email,
+      message: this.state.message
+    };
+
+    createContact(data, (response) => {
+      if (response) {
+        if (response.statusCode === HTTP_201_CREATED) {
+          this.onReset();
+          alertify.success("Your message was successfully sent.");
+        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
+          this.setError(response.body);
+          alertify.error("Please correct the errors and try again.");
+        } else {
+          this.onReset();
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
+      } else {
+        this.onReset();
+        alertify.error("An unexpected error has occurred and try again later.");
+      }
+    });
+  }
+
+  setError = (errors) => {
+    this.setState({
+      errors: errors
+    });
+
+    if (errors.non_field_errors) {
+      alertify.error(errors.non_field_errors.join("<br>"));
+    }
   }
 
   onReset = (e) => {
@@ -36,12 +76,13 @@ export default class ContactForm extends React.Component {
       first_name: "",
       last_name: "",
       email: "",
-      message: ""
+      message: "",
+      errors: {}
     });
   }
 
   render() {
-    const { first_name, last_name, email, message } = this.state;
+    const { first_name, last_name, email, message, errors } = this.state;
 
     return (
       <form id="id_contact_form" onSubmit={this.onSubmit} onReset={this.onReset}>
@@ -52,7 +93,13 @@ export default class ContactForm extends React.Component {
               type="text" id="id_first_name"
               className="first_name" name="first_name" 
               value={first_name} onChange={this.onChange} />
-            <div id="first_name_feedback" className="input-feedback"></div>
+            {errors.first_name &&
+              <div className="input-feedback">
+                {errors.first_name.map((error, index) =>
+                  <span key={index}>{error}</span>
+                )}
+              </div>
+            }
           </div>
           <div className="col-sm-6 col-xs-12">
             <p className="lastname-text">Last Name</p>
@@ -60,7 +107,13 @@ export default class ContactForm extends React.Component {
               type="text" id="id_last_name"
               className="last_name" name="last_name"
               value={last_name} onChange={this.onChange} />
-            <div id="last_name_feedback" className="input-feedback"></div>
+            {errors.last_name &&
+              <div className="input-feedback">
+                {errors.last_name.map((error, index) =>
+                  <span key={index}>{error}</span>
+                )}
+              </div>
+            }
           </div>
           <div className="col-lg-12 col-sm-8 col-xs-12">
             <p className="email-text">Email</p>
@@ -68,7 +121,13 @@ export default class ContactForm extends React.Component {
               type="email" id="id_email"
               className="email" name="email"
               value={email} onChange={this.onChange} />
-            <div id="email_feedback" className="input-feedback"></div>
+            {errors.email &&
+              <div className="input-feedback">
+                {errors.email.map((error, index) =>
+                  <span key={index}>{error}</span>
+                )}
+              </div>
+            }
           </div>
           <div className="col-sm-6 col-xs-12">
             <div className="message-box">
@@ -77,7 +136,13 @@ export default class ContactForm extends React.Component {
                 id="id_message" className="message" name="message"
                 value={message} onChange={this.onChange}>
               </textarea>
-              <div id="message_feedback" className="input-feedback"></div>
+              {errors.message &&
+                <div className="input-feedback">
+                  {errors.message.map((error, index) =>
+                    <span key={index}>{error}</span>
+                  )}
+                </div>
+              }
             </div>
           </div>
           <div className="col-sm-2 col-xs-12">

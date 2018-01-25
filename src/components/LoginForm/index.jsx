@@ -46,7 +46,7 @@ export default class LoginForm extends React.Component {
     var data = {
       email: this.state.email,
       password: this.state.password
-    }
+    };
 
     authLogin(data, (response) => {
       if (response) {
@@ -109,7 +109,7 @@ export default class LoginForm extends React.Component {
               name="email" placeholder="Email"
               value={email} onChange={this.onChange} />
             {errors.email &&
-              <div id="password_feedback" className="input-feedback">
+              <div className="input-feedback">
                 {errors.email.map((error, index) =>
                   <span key={index}>{error}</span>
                 )}
@@ -122,7 +122,7 @@ export default class LoginForm extends React.Component {
               name="password" placeholder="Password"
               value={password} onChange={this.onChange} />
             {errors.password &&
-              <div id="password_feedback" className="input-feedback">
+              <div className="input-feedback">
                 {errors.password.map((error, index) =>
                   <span key={index}>{error}</span>
                 )}
