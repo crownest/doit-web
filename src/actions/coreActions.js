@@ -4,43 +4,29 @@ import {
   alertify,
   api_auth_login_url,
   api_contacts_url,
-  HTTP_200_OK,
   HTTP_201_CREATED,
   HTTP_400_BAD_REQUEST,
-  setAuthInformations,
   clearErrorForm,
   setErrorForm,
   resetForm
 } from "./baseActions";
 
 
-export function authLogin(data) {
+export function authLogin(data, onComplete) {
+  /*
+    data = {
+      email: "crownest@unicrow.com"
+      password: "123456c"
+    }
+  */
+
   return request
     .post(api_auth_login_url)
     .type("application/json")
     .accept("application/json")
-    .send({
-      email: data["email"],
-      password: data["password"]
-    })
+    .send(data)
     .end(function(error, response) {
-      if (response) {
-        if (response.statusCode === HTTP_200_OK) {
-          resetForm(data, "id_login_form");
-          setAuthInformations(response.body.auth_token, response.body.user_id);
-          window.location = "/tasks/";
-        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
-          clearErrorForm(data);
-          alertify.error("Please correct the errors and try again.");
-          setErrorForm(response);
-        } else {
-          resetForm(data, "id_login_form");
-          alertify.error("An unexpected error has occurred and try again later.");
-        }
-      } else {
-        resetForm(data, "id_login_form");
-        alertify.error("An unexpected error has occurred and try again later.");
-      }
+      onComplete(response);
     });
 }
 
