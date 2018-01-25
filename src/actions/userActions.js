@@ -137,7 +137,15 @@ export function deleteUserImage(user_id, onComplete) {
 }
 
 
-export function changeUserPassword(data) {
+export function changeUserPassword(data, onComplete) {
+  /*
+    data = {
+      old_password: 12356c,
+      new_password: c123456,
+      confirm_new_password: c123456
+    }
+  */
+
   var auth_informations = getAuthInformations();
 
   return request
@@ -145,28 +153,9 @@ export function changeUserPassword(data) {
     .set("Authorization", "TOKEN " + auth_informations.auth_token)
     .type("application/json")
     .accept("application/json")
-    .send({
-      old_password: data["old_password"],
-      new_password: data["new_password"],
-      confirm_new_password: data["confirm_new_password"]
-    })
+    .send(data)
     .end(function(error, response) {
-      if (response) {
-        if (response.statusCode === HTTP_200_OK) {
-          resetForm(data, "id_change_password_form");
-          alertify.success("Your password has been successfully changed.");
-        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
-          clearErrorForm(data);
-          alertify.error("Please correct the errors and try again.");
-          setErrorForm(response);
-        } else {
-          resetForm(data, "id_change_password_form");
-          alertify.error("An unexpected error has occurred and try again later.");
-        }
-      } else {
-        resetForm(data, "id_change_password_form");
-        alertify.error("An unexpected error has occurred and try again later.");
-      }
+      onComplete(response);
     });
 }
 
