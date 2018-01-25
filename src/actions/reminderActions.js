@@ -1,4 +1,4 @@
-// Local Modules
+// Actions
 import {
   request,
   api_reminders_url,

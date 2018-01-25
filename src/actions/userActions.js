@@ -1,4 +1,4 @@
-// Local Modules
+// Actions
 import {
   request,
   alertify,
@@ -194,30 +194,19 @@ export function changeUserPassword(data) {
 }
 
 
-export function forgotUserPassword(data) {
+export function forgotUserPassword(data, onComplete) {
+  /*
+    data = {
+      email: "crownest@unicrow.com"
+    }
+  */
+
   return request
     .post(api_users_url + 'password/forgot/')
     .type("application/json")
     .accept("application/json")
-    .send({
-      email: data["email"],
-    })
+    .send(data)
     .end(function(error, response) {
-      if (response) {
-        if (response.statusCode === HTTP_200_OK) {
-          resetForm(data, "id_forgot_password_form");
-          alertify.success("We sent you a mail.<br>Please check your email address.");
-        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
-          clearErrorForm(data);
-          alertify.error("Please correct the errors and try again.");
-          setErrorForm(response);
-        } else {
-          resetForm(data, "id_forgot_password_form");
-          alertify.error("An unexpected error has occurred and try again later.");
-        }
-      } else {
-        resetForm(data, "id_forgot_password_form");
-        alertify.error("An unexpected error has occurred and try again later.");
-      }
+      onComplete(response);
     });
 }

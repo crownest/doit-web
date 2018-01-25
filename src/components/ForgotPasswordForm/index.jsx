@@ -2,6 +2,11 @@
 import React from "react";
 
 // Actions
+import {
+  alertify,
+  HTTP_200_OK,
+  HTTP_400_BAD_REQUEST
+} from "../../actions/baseActions";
 import { forgotUserPassword } from "../../actions/userActions";
 
 // Local Modules
@@ -12,11 +17,13 @@ export default class ForgotPasswordForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      email: ""
+      email: "",
+      errors: {}
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.setErrors = this.setErrors.bind(this);
     this.onReset = this.onReset.bind(this);
   }
 
@@ -26,19 +33,50 @@ export default class ForgotPasswordForm extends React.Component {
     this.setState(state);
   }
 
-  onSubmit = (e) => {
-    e.preventDefault();
-    forgotUserPassword(this.state);
+  setErrors = (errors) => {
+    this.setState({
+      errors: errors
+    });
+
+    if (errors.non_field_errors) {
+      alertify.error(errors.non_field_errors.join("<br>"));
+    }
   }
 
   onReset = (e) => {
     this.setState({
-      email: ""
+      email: "",
+      errors: {}
+    });
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    var data = {
+      email: this.state.email
+    };
+
+    forgotUserPassword(data, (response) => {
+      if (response) {
+        if (response.statusCode === HTTP_200_OK) {
+          this.onReset();
+          alertify.success("We sent you a mail.<br>Please check your email address.");
+        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
+          this.setErrors(response.body);
+          alertify.error("Please correct the errors and try again.");
+        } else {
+          this.onReset();
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
+      } else {
+        this.onReset();
+        alertify.error("An unexpected error has occurred and try again later.");
+      }
     });
   }
 
   render() {
-    const { email } = this.state;
+    const { email, errors } = this.state;
 
     return (
       <form id="id_forgot_password_form" onSubmit={this.onSubmit} onReset={this.onReset}>
@@ -48,7 +86,13 @@ export default class ForgotPasswordForm extends React.Component {
               type="email" id="id_email"
               name="email" placeholder="Email"
               value={email} onChange={this.onChange} />
-            <div id="email_feedback" className="input-feedback"></div>
+            {errors.email &&
+              <div className="input-feedback">
+                {errors.email.map((error, index) =>
+                  <span key={index}>{error}</span>
+                )}
+              </div>
+            }
           </div>
           <div className="col-xs-12 forgot-password-button">
             <button type="submit">SEND</button>
