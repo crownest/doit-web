@@ -14,6 +14,7 @@ import "./index.css"
 
 
 export default class TaskDeleteButton extends React.Component {
+
   onDelete(task_id) {
     alertify.confirm("Are you sure you want to delete?", function () {
       deleteTask(task_id, (response) => {

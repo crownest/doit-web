@@ -15,9 +15,9 @@ import "./index.css"
 
 export default class ReminderDeleteButton extends React.Component {
 
-  onDelete(task_id) {
+  onDelete(reminder_id) {
     alertify.confirm("Are you sure you want to delete?", function () {
-      deleteReminder(task_id, (response) => {
+      deleteReminder(reminder_id, (response) => {
         if (response) {
           if (response.statusCode === HTTP_204_NO_CONTENT) {
             alertify.success("Reminder deleted.");

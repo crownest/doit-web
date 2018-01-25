@@ -5,7 +5,6 @@ import {
   api_users_url,
   HTTP_200_OK,
   HTTP_201_CREATED,
-  HTTP_204_NO_CONTENT,
   HTTP_400_BAD_REQUEST,
   getAuthInformations,
   clearErrorForm,
@@ -135,28 +134,17 @@ export function updateUserImage(data) {
 }
 
 
-export function deleteUserImage(user_id) {
-  alertify.confirm("Are you sure you want to delete?", function () {
-    var auth_informations = getAuthInformations();
+export function deleteUserImage(user_id, onComplete) {
+  var auth_informations = getAuthInformations();
 
-    return request
-      .del(api_users_url + auth_informations.user_id + '/image/delete/')
-      .set("Authorization", "TOKEN " + auth_informations.auth_token)
-      .type("application/json")
-      .accept("application/json")
-      .end((error, response) => {
-        if (response) {
-          if (response.statusCode === HTTP_204_NO_CONTENT) {
-            alertify.success("Image deleted.");
-            window.location.reload();
-          } else {
-            alertify.error("An unexpected error has occurred and try again later.");
-          }
-        } else {
-          alertify.error("An unexpected error has occurred and try again later.");
-        }
-      });
-  });
+  return request
+    .del(api_users_url + auth_informations.user_id + '/image/delete/')
+    .set("Authorization", "TOKEN " + auth_informations.auth_token)
+    .type("application/json")
+    .accept("application/json")
+    .end((error, response) => {
+      onComplete(response);
+    });
 }
 
 
