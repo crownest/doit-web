@@ -5,6 +5,11 @@ import Datetime from 'react-datetime';
 import SimpleLineIcon from 'react-simple-line-icons';
 
 // Actions
+import {
+  alertify,
+  HTTP_200_OK,
+  HTTP_400_BAD_REQUEST
+} from "../../actions/baseActions";
 import { updateReminder } from '../../actions/reminderActions'
 
 // Local Modules
@@ -18,11 +23,14 @@ export default class ReminderUpdateForm extends React.Component {
 
     this.state = {
       date: null,
-      locale_date: props.locale_date
+      locale_date: props.locale_date,
+      errors: {}
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.setData = this.setData.bind(this);
+    this.setErrors = this.setErrors.bind(this);
     this.onReset = this.onReset.bind(this);
   }
 
@@ -32,24 +40,58 @@ export default class ReminderUpdateForm extends React.Component {
     });
   }
 
-  onSubmit = (e) => {
-    e.preventDefault();
-    updateReminder(this.props.id, this.state, (body) => {
-      this.setState({
-        date: body.locale_date,
-        locale_date: body.locale_date
-      });
+  setData = (data) => {
+    this.setState({
+      date: data.locale_date,
+      locale_date: data.locale_date
     });
+  }
+
+  setErrors = (errors) => {
+    this.setState({
+      errors: errors
+    });
+
+    if (errors.non_field_errors) {
+      alertify.error(errors.non_field_errors.join("<br>"));
+    }
   }
 
   onReset = (e) => {
     this.setState({
-      date: null
+      date: null,
+      errors: {}
+    });
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    var data = {
+      date: this.state.date
+    };
+
+    updateReminder(this.props.id, data, (response) => {
+      if (response) {
+        if (response.statusCode === HTTP_200_OK) {
+          this.onReset();
+          alertify.success("Reminder updated.");
+          this.setData(response.body);
+        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
+          this.setErrors(response.body);
+          alertify.error("Please correct the errors and try again.");
+        } else {
+          this.onReset();
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
+      } else {
+        this.onReset();
+        alertify.error("An unexpected error has occurred and try again later.");
+      }
     });
   }
 
   render() {
-    const { locale_date } = this.state;
+    const { locale_date, errors } = this.state;
 
     return (
       <form id="reminder-update-form" onSubmit={this.onSubmit} onReset={this.onReset}>
@@ -65,7 +107,13 @@ export default class ReminderUpdateForm extends React.Component {
             <button type="submit" className="reminder-update-button">
               <SimpleLineIcon name="check" color="green" size="large"/>
             </button>
-            <div id="date_feedback" className="input-feedback"></div>
+            {errors.date &&
+              <div className="input-feedback">
+                {errors.date.map((error, index) =>
+                  <span key={index}>{error}</span>
+                )}
+              </div>
+            }
           </div>
         </div>
       </form>

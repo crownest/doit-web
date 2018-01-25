@@ -67,7 +67,7 @@ export default class ReminderCreateForm extends React.Component {
     var data = {
       task: this.state.task,
       date: this.state.date
-    }
+    };
 
     createReminder(data, (response) => {
       if (response) {
