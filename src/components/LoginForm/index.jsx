@@ -30,7 +30,7 @@ export default class LoginForm extends React.Component {
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.setError = this.setError.bind(this);
+    this.setErrors = this.setErrors.bind(this);
     this.setRedirect = this.setRedirect.bind(this);
     this.onReset = this.onReset.bind(this);
   }
@@ -41,34 +41,7 @@ export default class LoginForm extends React.Component {
     this.setState(state);
   }
 
-  onSubmit = (e) => {
-    e.preventDefault();
-    var data = {
-      email: this.state.email,
-      password: this.state.password
-    };
-
-    authLogin(data, (response) => {
-      if (response) {
-        if (response.statusCode === HTTP_200_OK) {
-          this.onReset();
-          setAuthInformations(response.body.auth_token, response.body.user_id);
-          this.setRedirect();
-        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
-          this.setError(response.body);
-          alertify.error("Please correct the errors and try again.");
-        } else {
-          this.onReset();
-          alertify.error("An unexpected error has occurred and try again later.");
-        }
-      } else {
-        this.onReset();
-        alertify.error("An unexpected error has occurred and try again later.");
-      }
-    });
-  }
-
-  setError = (errors) => {
+  setErrors = (errors) => {
     this.setState({
       errors: errors
     });
@@ -90,6 +63,33 @@ export default class LoginForm extends React.Component {
       email: "",
       password: "",
       errors: {}
+    });
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    var data = {
+      email: this.state.email,
+      password: this.state.password
+    };
+
+    authLogin(data, (response) => {
+      if (response) {
+        if (response.statusCode === HTTP_200_OK) {
+          this.onReset();
+          setAuthInformations(response.body.auth_token, response.body.user_id);
+          this.setRedirect();
+        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
+          this.setErrors(response.body);
+          alertify.error("Please correct the errors and try again.");
+        } else {
+          this.onReset();
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
+      } else {
+        this.onReset();
+        alertify.error("An unexpected error has occurred and try again later.");
+      }
     });
   }
 

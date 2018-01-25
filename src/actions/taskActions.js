@@ -23,15 +23,7 @@ export function listTask(onComplete) {
     .type("application/json")
     .accept("application/json")
     .end((error, response) => {
-      if (response) {
-        if (response.statusCode === HTTP_200_OK) {
-          onComplete(response.body);
-        } else {
-          alertify.error("An unexpected error has occurred and try again later.");
-        }
-      } else {
-        alertify.error("An unexpected error has occurred and try again later.");
-      }
+      onComplete(response);
     });
 }
 

@@ -23,7 +23,7 @@ export default class ContactForm extends React.Component {
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.setError = this.setError.bind(this);
+    this.setErrors = this.setErrors.bind(this);
     this.onReset = this.onReset.bind(this);
   }
 
@@ -31,6 +31,26 @@ export default class ContactForm extends React.Component {
     const state = this.state
     state[e.target.name] = e.target.value;
     this.setState(state);
+  }
+
+  setErrors = (errors) => {
+    this.setState({
+      errors: errors
+    });
+
+    if (errors.non_field_errors) {
+      alertify.error(errors.non_field_errors.join("<br>"));
+    }
+  }
+
+  onReset = (e) => {
+    this.setState({
+      first_name: "",
+      last_name: "",
+      email: "",
+      message: "",
+      errors: {}
+    });
   }
 
   onSubmit = (e) => {
@@ -48,7 +68,7 @@ export default class ContactForm extends React.Component {
           this.onReset();
           alertify.success("Your message was successfully sent.");
         } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
-          this.setError(response.body);
+          this.setErrors(response.body);
           alertify.error("Please correct the errors and try again.");
         } else {
           this.onReset();
@@ -58,26 +78,6 @@ export default class ContactForm extends React.Component {
         this.onReset();
         alertify.error("An unexpected error has occurred and try again later.");
       }
-    });
-  }
-
-  setError = (errors) => {
-    this.setState({
-      errors: errors
-    });
-
-    if (errors.non_field_errors) {
-      alertify.error(errors.non_field_errors.join("<br>"));
-    }
-  }
-
-  onReset = (e) => {
-    this.setState({
-      first_name: "",
-      last_name: "",
-      email: "",
-      message: "",
-      errors: {}
     });
   }
 

@@ -13,7 +13,11 @@ import TaskListContent from '../../objects/TaskListContent/index';
 import TaskListEmptyContent from '../../objects/TaskListEmptyContent/index';
 
 // Actions
-import { isAuthentication } from "../../actions/baseActions";
+import {
+  alertify,
+  HTTP_200_OK,
+  isAuthentication
+} from "../../actions/baseActions";
 import { retrieveUser } from "../../actions/userActions";
 import { listTask } from "../../actions/taskActions";
 
@@ -29,16 +33,24 @@ export default class TaskList extends React.Component {
       user: {},
       tasks: []
     };
+
+    this.setTasks = this.setTasks.bind(this);
   }
 
   componentWillMount() {
     document.title = "Tasks | Doit";
 
     if (isAuthentication()) {
-      listTask((body) => {
-        this.setState({
-          tasks: body
-        });
+      listTask((response) => {
+        if (response) {
+          if (response.statusCode === HTTP_200_OK) {
+            this.setTasks(response.body);
+          } else {
+            alertify.error("An unexpected error has occurred and try again later.");
+          }
+        } else {
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
       });
 
       retrieveUser((body) => {
@@ -47,6 +59,12 @@ export default class TaskList extends React.Component {
         });
       });
     }
+  }
+
+  setTasks = (tasks) => {
+    this.setState({
+      tasks: tasks
+    });
   }
 
   render() {
