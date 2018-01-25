@@ -35,6 +35,7 @@ export default class TaskList extends React.Component {
     };
 
     this.setTasks = this.setTasks.bind(this);
+    this.setUser = this.setUser.bind(this);
   }
 
   componentWillMount() {
@@ -53,10 +54,16 @@ export default class TaskList extends React.Component {
         }
       });
 
-      retrieveUser((body) => {
-        this.setState({
-          user: body
-        });
+      retrieveUser((response) => {
+        if (response) {
+          if (response.statusCode === HTTP_200_OK) {
+            this.setUser(response.body);
+          } else {
+            alertify.error("An unexpected error has occurred and try again later.");
+          }
+        } else {
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
       });
     }
   }
@@ -64,6 +71,12 @@ export default class TaskList extends React.Component {
   setTasks = (tasks) => {
     this.setState({
       tasks: tasks
+    });
+  }
+
+  setUser = (user) => {
+    this.setState({
+      user: user
     });
   }
 

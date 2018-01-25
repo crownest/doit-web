@@ -9,7 +9,11 @@ import UserImage from '../../components/UserImage/index';
 import Header from '../../objects/Header/index';
 
 // Actions
-import { isAuthentication } from "../../actions/baseActions";
+import {
+  alertify,
+  HTTP_200_OK,
+  isAuthentication
+} from "../../actions/baseActions";
 import { retrieveUser } from "../../actions/userActions";
 
 // Local Modules
@@ -23,18 +27,32 @@ export default class Settings extends React.Component {
     this.state = {
       user: {}
     };
+
+    this.setUser = this.setUser.bind(this);
   }
 
   componentWillMount() {
     document.title = "Settings | Doit";
 
     if (isAuthentication()) {
-      retrieveUser((body) => {
-        this.setState({
-          user: body
-        });
+      retrieveUser((response) => {
+        if (response) {
+          if (response.statusCode === HTTP_200_OK) {
+            this.setUser(response.body);
+          } else {
+            alertify.error("An unexpected error has occurred and try again later.");
+          }
+        } else {
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
       });
     }
+  }
+
+  setUser = (user) => {
+    this.setState({
+      user: user
+    });
   }
 
   render() {

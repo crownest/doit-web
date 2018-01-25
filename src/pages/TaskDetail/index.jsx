@@ -40,6 +40,7 @@ export default class TaskDetail extends React.Component {
     };
 
     this.setTask = this.setTask.bind(this);
+    this.setUser = this.setUser.bind(this);
     this.setRedirect = this.setRedirect.bind(this);
   }
 
@@ -47,10 +48,16 @@ export default class TaskDetail extends React.Component {
     document.title = "Task Detail | Doit";
 
     if (isAuthentication()) {
-      retrieveUser((body) => {
-        this.setState({
-          user: body
-        });
+      retrieveUser((response) => {
+        if (response) {
+          if (response.statusCode === HTTP_200_OK) {
+            this.setUser(response.body);
+          } else {
+            alertify.error("An unexpected error has occurred and try again later.");
+          }
+        } else {
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
       });
 
       var task_id = this.props.match.params.task_id;
@@ -73,6 +80,12 @@ export default class TaskDetail extends React.Component {
   setTask = (task) => {
     this.setState({
       task: task
+    });
+  }
+
+  setUser = (user) => {
+    this.setState({
+      user: user
     });
   }
 

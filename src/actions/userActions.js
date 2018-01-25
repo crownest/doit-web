@@ -3,7 +3,6 @@ import {
   request,
   alertify,
   api_users_url,
-  HTTP_200_OK,
   HTTP_201_CREATED,
   HTTP_400_BAD_REQUEST,
   getAuthInformations,
@@ -57,15 +56,7 @@ export function retrieveUser(onComplete) {
     .type("application/json")
     .accept("application/json")
     .end((error, response) => {
-      if (response) {
-        if (response.statusCode === HTTP_200_OK) {
-          onComplete(response.body);
-        } else {
-          alertify.error("An unexpected error has occurred and try again later.");
-        }
-      } else {
-        alertify.error("An unexpected error has occurred and try again later.");
-      }
+      onComplete(response);
     });
 }
 

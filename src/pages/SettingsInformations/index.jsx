@@ -9,9 +9,15 @@ import ChangeInformationsForm from '../../components/ChangeInformationsForm/inde
 // Objects
 import Header from '../../objects/Header/index';
 
-// Local Modules
-import { isAuthentication } from "../../actions/baseActions";
+// Actions
+import {
+  alertify,
+  HTTP_200_OK,
+  isAuthentication
+} from "../../actions/baseActions";
 import { retrieveUser } from "../../actions/userActions";
+
+// Local Modules
 import './index.css';
 
 
@@ -22,18 +28,32 @@ export default class SettingsInformations extends React.Component {
     this.state = {
       user: {}
     };
+
+    this.setUser = this.setUser.bind(this);
   }
 
   componentWillMount() {
     document.title = "Change Informations | Doit";
 
     if (isAuthentication()) {
-      retrieveUser((body) => {
-        this.setState({
-          user: body
-        });
+      retrieveUser((response) => {
+        if (response) {
+          if (response.statusCode === HTTP_200_OK) {
+            this.setUser(response.body);
+          } else {
+            alertify.error("An unexpected error has occurred and try again later.");
+          }
+        } else {
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
       });
     }
+  }
+
+  setUser = (user) => {
+    this.setState({
+      user: user
+    });
   }
 
   render() {
