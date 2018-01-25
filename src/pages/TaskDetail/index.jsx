@@ -12,7 +12,11 @@ import Header from '../../objects/Header/index';
 import ReminderListContent from '../../objects/ReminderListContent/index';
 
 // Actions
-import { isAuthentication } from "../../actions/baseActions";
+import {
+  alertify,
+  HTTP_200_OK,
+  isAuthentication
+} from "../../actions/baseActions";
 import { retrieveUser } from "../../actions/userActions";
 import { retrieveTask } from "../../actions/taskActions";
 
@@ -26,6 +30,7 @@ export default class TaskDetail extends React.Component {
     super();
 
     this.state = {
+      redirect: false,
       user: {},
       task: {
         title: "",
@@ -33,6 +38,9 @@ export default class TaskDetail extends React.Component {
         reminders: []
       }
     };
+
+    this.setTask = this.setTask.bind(this);
+    this.setRedirect = this.setRedirect.bind(this);
   }
 
   componentWillMount() {
@@ -46,41 +54,67 @@ export default class TaskDetail extends React.Component {
       });
 
       var task_id = this.props.match.params.task_id;
-      retrieveTask(task_id, (body) => {
-        this.setState({
-          task: body
-        });
+      retrieveTask(task_id, (response) => {
+        if (response) {
+          if (response.statusCode === HTTP_200_OK) {
+            this.setTask(response.body);
+          } else {
+            alertify.error("An unexpected error has occurred and try again later.");
+            this.setRedirect();
+          }
+        } else {
+          alertify.error("An unexpected error has occurred and try again later.");
+          this.setRedirect();
+        }
       });
     }
   }
 
+  setTask = (task) => {
+    this.setState({
+      task: task
+    });
+  }
+
+  setRedirect = (e) => {
+    this.setState({
+      redirect: true
+    });
+  }
+
   render() {
+    const { redirect, user, task } = this.state;
+
     if (!isAuthentication()) {
       return (
         <Redirect to="/login/"/>
       )
+    } else if (redirect) {
+      return (
+        <Redirect to="/tasks/"/>
+      )
     } else {
       let reminder_content = null;
 
-      if (this.state.task.reminders.length > 0) {
-        reminder_content = <ReminderListContent reminders={this.state.task.reminders}></ReminderListContent>
+      if (task.reminders.length > 0) {
+        reminder_content = <ReminderListContent reminders={task.reminders}></ReminderListContent>
       } else {
-        reminder_content = <ReminderCreateForm task_id={this.state.task.id}></ReminderCreateForm>
+        reminder_content = <ReminderCreateForm task_id={task.id}></ReminderCreateForm>
       }
 
       return(
         <div className="container taskdetail-page">
           <Header></Header>
-          <UserImage image_src={this.state.user.image_128x128}></UserImage>
+          <UserImage image_src={user.image_128x128}></UserImage>
           <div className="taskdetail-table">
             <div className="taskdetail-table__header">
-              <p className="user-name">{this.state.user.first_name} {this.state.user.last_name}</p>
+              <p className="user-name">{user.first_name} {user.last_name}</p>
             </div>
             <div className="taskdetail-table__content">
               <TaskUpdateForm
                 id={this.props.match.params.task_id}
-                title={this.state.task.title}
-                description={this.state.task.description}>
+                title={task.title}
+                description={task.description}>
               </TaskUpdateForm>
               {reminder_content}
             </div>

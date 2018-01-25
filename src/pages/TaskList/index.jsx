@@ -68,6 +68,8 @@ export default class TaskList extends React.Component {
   }
 
   render() {
+    const { user, tasks } = this.state;
+
     if (!isAuthentication()) {
       return (
         <Redirect to="/login/"/>
@@ -75,8 +77,8 @@ export default class TaskList extends React.Component {
     } else {
       let tasklist_content = null;
 
-      if (this.state.tasks.length > 0) {
-        tasklist_content = <TaskListContent tasks={this.state.tasks}></TaskListContent>;
+      if (tasks.length > 0) {
+        tasklist_content = <TaskListContent tasks={tasks}></TaskListContent>;
       } else {
         tasklist_content = <TaskListEmptyContent></TaskListEmptyContent>;
       }
@@ -84,10 +86,10 @@ export default class TaskList extends React.Component {
       return(
         <div className="container tasklist-page">
           <Header></Header>
-          <UserImage image_src={this.state.user.image_128x128}></UserImage>
+          <UserImage image_src={user.image_128x128}></UserImage>
           <div className="tasklist-table">
             <div className="tasklist-table__header">
-              <p className="user-name">{this.state.user.first_name} {this.state.user.last_name}</p>
+              <p className="user-name">{user.first_name} {user.last_name}</p>
               <TaskCreateButton></TaskCreateButton>
             </div>
             <div className="tasklist-table__content">

@@ -61,17 +61,7 @@ export function retrieveTask(task_id, onComplete) {
     .type("application/json")
     .accept("application/json")
     .end((error, response) => {
-      if (response) {
-        if (response.statusCode === HTTP_200_OK) {
-          onComplete(response.body);
-        } else {
-          alertify.error("An unexpected error has occurred and try again later.");
-          window.location = "/tasks/"
-        }
-      } else {
-        alertify.error("An unexpected error has occurred and try again later.");
-        window.location = "/tasks/"
-      }
+      onComplete(response);
     });
 }
 

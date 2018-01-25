@@ -13,6 +13,7 @@ import { createContact } from "../../actions/coreActions";
 export default class ContactForm extends React.Component {
   constructor() {
     super();
+
     this.state = {
       first_name: "",
       last_name: "",

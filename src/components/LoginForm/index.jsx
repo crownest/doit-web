@@ -21,6 +21,7 @@ import './index.css'
 export default class LoginForm extends React.Component {
   constructor() {
     super();
+
     this.state = {
       redirect: false,
       email: "",
@@ -97,7 +98,9 @@ export default class LoginForm extends React.Component {
     const { redirect, email, password, errors } = this.state;
 
     if (redirect) {
-      return <Redirect to='/tasks/'/>;
+      return (
+        <Redirect to='/tasks/'/>
+      )
     }
 
     return (
