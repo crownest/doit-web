@@ -57,6 +57,8 @@ export default class SettingsInformations extends React.Component {
   }
 
   render() {
+    const { user } = this.state;
+
     if (!isAuthentication()) {
       return (
         <Redirect to="/login/"/>
@@ -65,16 +67,16 @@ export default class SettingsInformations extends React.Component {
       return (
         <div className="container settingsinformations-page">
           <Header></Header>
-          <UserImage image_src={this.state.user.image_128x128}></UserImage>
+          <UserImage image_src={user.image_128x128}></UserImage>
           <div className="settingsinformations-table">
             <div className="settingsinformations-table__header">
               <p className="header-title">INFORMATIONS</p>
             </div>
             <div className="settingsinformations-table__content">
               <ChangeInformationsForm
-                email={this.state.user.email}
-                first_name={this.state.user.first_name}
-                last_name={this.state.user.last_name}>
+                email={user.email}
+                first_name={user.first_name}
+                last_name={user.last_name}>
               </ChangeInformationsForm>
             </div>
           </div>

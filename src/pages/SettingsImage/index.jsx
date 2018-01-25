@@ -57,6 +57,8 @@ export default class SettingsImage extends React.Component {
   }
 
   render() {
+    const { user } = this.state;
+
     if (!isAuthentication()) {
       return (
         <Redirect to="/login/"/>
@@ -67,11 +69,11 @@ export default class SettingsImage extends React.Component {
           <Header></Header>
           <div className="settingsimage-table">
             <div className="settingsimage-table__header">
-              <p className="user-name">{this.state.user.first_name} {this.state.user.last_name}</p>
+              <p className="user-name">{user.first_name} {user.last_name}</p>
             </div>
             <div className="settingsimage-table__content">
-              <ChangeImageForm user={this.state.user}></ChangeImageForm>
-              <UserImageDeleteButton user={this.state.user}></UserImageDeleteButton>
+              <ChangeImageForm user={user}></ChangeImageForm>
+              <UserImageDeleteButton user={user}></UserImageDeleteButton>
             </div>
           </div>
         </div>

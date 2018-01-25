@@ -55,6 +55,8 @@ export default class SettingsContact extends React.Component {
   }
 
   render() {
+    const { user } = this.state;
+
     if (!isAuthentication()) {
       return (
         <Redirect to="/login/"/>
@@ -63,16 +65,16 @@ export default class SettingsContact extends React.Component {
       return (
         <div className="container settingscontact-page">
           <Header></Header>
-          <UserImage image_src={this.state.user.image_128x128}></UserImage>
+          <UserImage image_src={user.image_128x128}></UserImage>
           <div className="settingscontact-table">
             <div className="settingscontact-table__header">
               <p className="header-title">CONTACT</p>
             </div>
             <div className="settingscontact-table__content">
               <SettingsContactForm
-                email={this.state.user.email}
-                first_name={this.state.user.first_name}
-                last_name={this.state.user.last_name}
+                email={user.email}
+                first_name={user.first_name}
+                last_name={user.last_name}
               ></SettingsContactForm>
             </div>
           </div>

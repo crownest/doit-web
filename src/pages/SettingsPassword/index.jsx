@@ -57,6 +57,8 @@ export default class SettingsPassword extends React.Component {
   }
 
   render() {
+    const { user } = this.state;
+
     if (!isAuthentication()) {
       return (
         <Redirect to="/login/"/>
@@ -65,10 +67,10 @@ export default class SettingsPassword extends React.Component {
       return(
         <div className="container settingspassword-page">
           <Header></Header>
-          <UserImage image_src={this.state.user.image_128x128}></UserImage>
+          <UserImage image_src={user.image_128x128}></UserImage>
           <div className="settingspassword-table">
             <div className="settingspassword-table__header">
-              <p className="user-name">{this.state.user.first_name} {this.state.user.last_name}</p>
+              <p className="user-name">{user.first_name} {user.last_name}</p>
               <p className="header-title">PASSWORD</p>
             </div>
             <div className="settingspassword-table__content">
