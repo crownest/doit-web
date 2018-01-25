@@ -1,9 +1,17 @@
 // Packages
 import React from "react";
+import { Redirect } from 'react-router-dom';
 import SimpleLineIcon from 'react-simple-line-icons';
 
-// Local Modules
+// Actions
+import {
+  alertify,
+  HTTP_201_CREATED,
+  HTTP_400_BAD_REQUEST
+} from "../../actions/baseActions";
 import { createTask } from "../../actions/taskActions";
+
+// Locale Modules
 import './index.css'
 
 
@@ -12,12 +20,17 @@ export default class TaskCreateForm extends React.Component {
     super();
 
     this.state = {
+      redirect: false,
+      id: null,
       title: "",
-      description: ""
+      description: "",
+      errors: {}
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.setErrors = this.setErrors.bind(this);
+    this.setRedirect = this.setRedirect.bind(this);
     this.onReset = this.onReset.bind(this);
   }
 
@@ -27,20 +40,66 @@ export default class TaskCreateForm extends React.Component {
     this.setState(state);
   }
 
-  onSubmit = (e) => {
-    e.preventDefault();
-    createTask(this.state);
+  setErrors = (errors) => {
+    this.setState({
+      errors: errors
+    });
+
+    if (errors.non_field_errors) {
+      alertify.error(errors.non_field_errors.join("<br>"));
+    }
+  }
+
+  setRedirect = (id) => {
+    this.setState({
+      redirect: true,
+      id: id
+    });
   }
 
   onReset = (e) => {
     this.setState({
+      redirect: false,
+      id: null,
       title: "",
-      description: ""
+      description: "",
+      errors: {}
+    });
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    var data = {
+      title: this.state.title,
+      description: this.state.description
+    }
+
+    createTask(data, (response) => {
+      if (response) {
+        if (response.statusCode === HTTP_201_CREATED) {
+          this.onReset();
+          alertify.success("Task created.");
+          this.setRedirect(response.body.id);
+        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
+          this.setErrors(response.body);
+          alertify.error("Please correct the errors and try again.");
+        } else {
+          this.onReset();
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
+      } else {
+        this.onReset();
+        alertify.error("An unexpected error has occurred and try again later.");
+      }
     });
   }
 
   render() {
-    const { title, description } = this.state;
+    const { redirect, id, title, description, errors } = this.state;
+
+    if (redirect && id) {
+      return <Redirect to={"/tasks/" + id + "/"}/>;
+    }
 
     return (
       <form id="id_task_create_form" onSubmit={this.onSubmit} onReset={this.onReset}>
@@ -53,14 +112,26 @@ export default class TaskCreateForm extends React.Component {
             <button type="submit" className="task-create-button">
               <SimpleLineIcon name="check" color="green" size="large"/>
             </button>
-            <div id="title_feedback" className="input-feedback"></div>
+            {errors.title &&
+              <div className="input-feedback">
+                {errors.title.map((error, index) =>
+                  <span key={index}>{error}</span>
+                )}
+              </div>
+            }
           </div>
           <div className="col-xs-12">
             <textarea
               id="id_description" name="description" placeholder="Description"
               value={description} onChange={this.onChange}>
             </textarea>
-            <div id="description_feedback" className="input-feedback"></div>
+            {errors.description &&
+              <div className="input-feedback">
+                {errors.description.map((error, index) =>
+                  <span key={index}>{error}</span>
+                )}
+              </div>
+            }
           </div>
         </div>
       </form>

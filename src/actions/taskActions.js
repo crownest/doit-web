@@ -1,11 +1,10 @@
-// Local Modules
+// Actions
 import {
   request,
   alertify,
   api_tasks_url,
   getAuthInformations,
   HTTP_200_OK,
-  HTTP_201_CREATED,
   HTTP_204_NO_CONTENT,
   HTTP_400_BAD_REQUEST,
   clearErrorForm,
@@ -28,7 +27,14 @@ export function listTask(onComplete) {
 }
 
 
-export function createTask(data) {
+export function createTask(data, onComplete) {
+  /*
+    data = {
+      title: "Drink Tea",
+      description: "Chai Masala"
+    }
+  */
+
   var auth_informations = getAuthInformations();
 
   return request
@@ -41,23 +47,7 @@ export function createTask(data) {
       description: data["description"]
     })
     .end(function(error, response) {
-      if (response) {
-        if (response.statusCode === HTTP_201_CREATED) {
-          resetForm(data, "id_task_create_form");
-          alertify.success("Task created.");
-          window.location = "/tasks/" + response.body.id + "/";
-        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
-          clearErrorForm(data);
-          alertify.error("Please correct the errors and try again.");
-          setErrorForm(response);
-        } else {
-          resetForm(data, "id_task_create_form");
-          alertify.error("An unexpected error has occurred and try again later.");
-        }
-      } else {
-        resetForm(data, "id_task_create_form");
-        alertify.error("An unexpected error has occurred and try again later.");
-      }
+      onComplete(response);
     });
 }
 
