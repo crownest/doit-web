@@ -105,31 +105,20 @@ export function updateUser(data, onComplete) {
 }
 
 
-export function updateUserImage(data) {
+export function updateUserImage(image, onComplete) {
+  /*
+    image: @image
+  */
+
   var auth_informations = getAuthInformations();
 
   return request
     .post(api_users_url + auth_informations.user_id + '/image/update/')
     .set("Authorization", "TOKEN " + auth_informations.auth_token)
     .accept("application/json")
-    .attach('image', data["image"])
+    .attach('image', image)
     .end(function(error, response) {
-      if (response) {
-        if (response.statusCode === HTTP_200_OK) {
-          resetForm(data, "change-image-form");
-          alertify.success("Your image has been successfully updated.");
-        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
-          clearErrorForm(data);
-          alertify.error("Please correct the errors and try again.");
-          setErrorForm(response);
-        } else {
-          resetForm(data, "change-image-form");
-          alertify.error("An unexpected error has occurred and try again later.");
-        }
-      } else {
-        resetForm(data, "change-image-form");
-        alertify.error("An unexpected error has occurred and try again later.");
-      }
+      onComplete(response);
     });
 }
 
