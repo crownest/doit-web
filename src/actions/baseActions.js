@@ -55,50 +55,6 @@ function isAuthentication() {
   }
 }
 
-function clearErrorForm(data) {
-  for (var input_name in data) {
-    var input = document.getElementById("id_" + input_name);
-    if (input) {
-      input.classList.remove("has-error");
-    }
-
-    var input_feedback = document.getElementById(input_name + "_feedback");
-    if (input_feedback) {
-      input_feedback.innerHTML = "";
-    }
-  }
-}
-
-function setErrorForm(response) {
-  if (response) {
-    if (response.body.non_field_errors) {
-      alertify.error(response.body.non_field_errors.join("<br>"));
-    }
-
-    for (var input_name in response.body) {
-      var input = document.getElementById("id_" + input_name);
-      if (input) {
-        input.classList.add("has-error");
-      }
-
-      var input_feedback = document.getElementById(input_name + "_feedback");
-      if (input_feedback) {
-        var error_message = "<span>" + response.body[input_name].join("<br>") + "</span>";
-        input_feedback.innerHTML = error_message;
-      }
-    }
-  }
-}
-
-function resetForm(data, form_id) {
-  clearErrorForm(data);
-
-  var form = document.getElementById(form_id);
-  if (form) {
-    form.reset();
-  }
-}
-
 
 module.exports = {
   request,
@@ -117,8 +73,5 @@ module.exports = {
   setAuthInformations,
   getAuthInformations,
   removeAuthInformations,
-  isAuthentication,
-  clearErrorForm,
-  setErrorForm,
-  resetForm
+  isAuthentication
 }
