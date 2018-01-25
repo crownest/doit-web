@@ -10,7 +10,7 @@ export default class UserImage extends React.Component {
     return(
       <div className="user">
         <figure className="user-photo">
-          <img src={this.props.image_src} alt="profile"/>
+          <img src={this.props.image_src} alt=""/>
         </figure>
       </div>
     );
