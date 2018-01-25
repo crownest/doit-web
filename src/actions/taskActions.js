@@ -4,12 +4,7 @@ import {
   alertify,
   api_tasks_url,
   getAuthInformations,
-  HTTP_200_OK,
   HTTP_204_NO_CONTENT,
-  HTTP_400_BAD_REQUEST,
-  clearErrorForm,
-  setErrorForm,
-  resetForm
 } from "./baseActions";
 
 
@@ -67,6 +62,13 @@ export function retrieveTask(task_id, onComplete) {
 
 
 export function updateTask(task_id, data, onComplete) {
+  /*
+    data = {
+      title: "Sport",
+      description: "Basketball"
+    }
+  */
+
   var auth_informations = getAuthInformations();
 
   return request
@@ -74,28 +76,9 @@ export function updateTask(task_id, data, onComplete) {
     .set("Authorization", "TOKEN " + auth_informations.auth_token)
     .type("application/json")
     .accept("application/json")
-    .send({
-      title: data["title"],
-      description: data["description"]
-    })
+    .send(data)
     .end(function(error, response) {
-      if (response) {
-        if (response.statusCode === HTTP_200_OK) {
-          resetForm(data, "id_task_update_form");
-          alertify.success("Task updated.");
-          onComplete(response.body);
-        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
-          clearErrorForm(data);
-          alertify.error("Please correct the errors and try again.");
-          setErrorForm(response);
-        } else {
-          resetForm(data, "id_task_update_form");
-          alertify.error("An unexpected error has occurred and try again later.");
-        }
-      } else {
-        resetForm(data, "id_task_update_form");
-        alertify.error("An unexpected error has occurred and try again later.");
-      }
+      onComplete(response);
     });
 }
 
