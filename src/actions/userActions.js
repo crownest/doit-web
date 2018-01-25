@@ -1,48 +1,29 @@
 // Actions
 import {
   request,
-  alertify,
   api_users_url,
-  HTTP_201_CREATED,
-  HTTP_400_BAD_REQUEST,
-  getAuthInformations,
-  clearErrorForm,
-  setErrorForm,
-  resetForm
+  getAuthInformations
 } from "./baseActions";
 
 
-export function createUser(data) {
+export function createUser(data, onComplete) {
+  /*
+    data = {
+      email: "crownest@unicrow.com",
+      first_name: "Crownest",
+      last_name: "Apps",
+      password: "123456c",
+      confirm_password: "123456c"
+    }
+  */
+
   return request
     .post(api_users_url)
     .type("application/json")
     .accept("application/json")
-    .send({
-      email: data["email"],
-      first_name: data["first_name"],
-      last_name: data["last_name"],
-      password: data["password"],
-      confirm_password: data["confirm_password"]
-    })
+    .send(data)
     .end(function(error, response) {
-      if (response) {
-        if (response.statusCode === HTTP_201_CREATED) {
-          resetForm(data, "id_register_form");
-          alertify.success(
-            "Your registration was successful.<br> Please verify your email address."
-          );
-        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
-          clearErrorForm(data);
-          alertify.error("Please correct the errors and try again.");
-          setErrorForm(response);
-        } else {
-          resetForm(data, "id_register_form");
-          alertify.error("An unexpected error has occurred and try again later.");
-        }
-      } else {
-        resetForm(data, "id_register_form");
-        alertify.error("An unexpected error has occurred and try again later.");
-      }
+      onComplete(response);
     });
 }
 
