@@ -1,7 +1,6 @@
 // Actions
 import {
   request,
-  alertify,
   api_tasks_url,
   getAuthInformations
 } from "./baseActions";
