@@ -71,6 +71,14 @@ export function retrieveUser(onComplete) {
 
 
 export function updateUser(data, onComplete) {
+  /*
+    data = {
+      email: "hello@unicrow.com",
+      first_name: "Hello",
+      last_name: "Apps"
+    }
+  */
+
   var auth_informations = getAuthInformations();
 
   return request
@@ -78,29 +86,9 @@ export function updateUser(data, onComplete) {
     .set("Authorization", "TOKEN " + auth_informations.auth_token)
     .type("application/json")
     .accept("application/json")
-    .send({
-      email: data["email"],
-      first_name: data["first_name"],
-      last_name: data["last_name"]
-    })
+    .send(data)
     .end(function(error, response) {
-      if (response) {
-        if (response.statusCode === HTTP_200_OK) {
-          resetForm(data, "id_change_password_form");
-          alertify.success("Your informations has been successfully updated.");
-          onComplete(response.body);
-        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
-          clearErrorForm(data);
-          alertify.error("Please correct the errors and try again.");
-          setErrorForm(response);
-        } else {
-          resetForm(data, "id_change_password_form");
-          alertify.error("An unexpected error has occurred and try again later.");
-        }
-      } else {
-        resetForm(data, "id_change_password_form");
-        alertify.error("An unexpected error has occurred and try again later.");
-      }
+      onComplete(response);
     });
 }
 
