@@ -5,6 +5,11 @@ import Datetime from 'react-datetime';
 import SimpleLineIcon from 'react-simple-line-icons';
 
 // Actions
+import {
+  alertify,
+  HTTP_201_CREATED,
+  HTTP_400_BAD_REQUEST
+} from "../../actions/baseActions";
 import { createReminder } from '../../actions/reminderActions'
 
 // Local Modules
@@ -17,11 +22,13 @@ export default class ReminderCreateForm extends React.Component {
 
     this.state = {
       task: "",
-      date: null
+      date: null,
+      errors: {}
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.setErrors = this.setErrors.bind(this);
     this.onReset = this.onReset.bind(this);
   }
 
@@ -37,19 +44,54 @@ export default class ReminderCreateForm extends React.Component {
     });
   }
 
-  onSubmit = (e) => {
-    e.preventDefault();
-    createReminder(this.state);
+  setErrors = (errors) => {
+    this.setState({
+      errors: errors
+    });
+
+    if (errors.non_field_errors) {
+      alertify.error(errors.non_field_errors.join("<br>"));
+    }
   }
 
   onReset = (e) => {
     this.setState({
       task: "",
-      date: null
+      date: null,
+      errors: {}
+    });
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    var data = {
+      task: this.state.task,
+      date: this.state.date
+    }
+
+    createReminder(data, (response) => {
+      if (response) {
+        if (response.statusCode === HTTP_201_CREATED) {
+          this.onReset();
+          alertify.success("Reminder created.");
+          window.location.reload();
+        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
+          this.setErrors(response.body);
+          alertify.error("Please correct the errors and try again.");
+        } else {
+          this.onReset();
+          alertify.error("An unexpected error has occurred and try again later.");
+        }
+      } else {
+        this.onReset();
+        alertify.error("An unexpected error has occurred and try again later.");
+      }
     });
   }
 
   render() {
+    const { errors } = this.state;
+
     return (
       <form id="reminder-create-form" onSubmit={this.onSubmit} onReset={this.onReset}>
         <div className="row">
@@ -60,7 +102,13 @@ export default class ReminderCreateForm extends React.Component {
             <button type="submit" className="reminder-create-button">
               <SimpleLineIcon name="check" color="green" size="large"/>
             </button>
-            <div id="date_feedback" className="input-feedback"></div>
+            {errors.date &&
+              <div className="input-feedback">
+                {errors.date.map((error, index) =>
+                  <span key={index}>{error}</span>
+                )}
+              </div>
+            }
           </div>
         </div>
       </form>

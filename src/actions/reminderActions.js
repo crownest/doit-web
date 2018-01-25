@@ -5,7 +5,6 @@ import {
   api_reminders_url,
   getAuthInformations,
   HTTP_200_OK,
-  HTTP_201_CREATED,
   HTTP_400_BAD_REQUEST,
   clearErrorForm,
   setErrorForm,
@@ -13,7 +12,14 @@ import {
 } from "./baseActions";
 
 
-export function createReminder(data) {
+export function createReminder(data, onComplete) {
+  /*
+    data = {
+      task: 1,
+      date: "2017-12-18T16:00:00+03:00"
+    }
+  */
+
   var auth_informations = getAuthInformations();
 
   return request
@@ -21,28 +27,9 @@ export function createReminder(data) {
     .set("Authorization", "TOKEN " + auth_informations.auth_token)
     .type("application/json")
     .accept("application/json")
-    .send({
-      task: data["task"],
-      date: data["date"]
-    })
+    .send(data)
     .end(function(error, response) {
-      if (response) {
-        if (response.statusCode === HTTP_201_CREATED) {
-          resetForm(data, "reminder-create-form");
-          alertify.success("Reminder created.");
-          window.location.reload();
-        } else if (response.statusCode === HTTP_400_BAD_REQUEST) {
-          clearErrorForm(data);
-          alertify.error("Please correct the errors and try again.");
-          setErrorForm(response);
-        } else {
-          resetForm(data, "reminder-create-form");
-          alertify.error("An unexpected error has occurred and try again later.");
-        }
-      } else {
-        resetForm(data, "reminder-create-form");
-        alertify.error("An unexpected error has occurred and try again later.");
-      }
+      onComplete(response);
     });
 }
 
