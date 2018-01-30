@@ -15,7 +15,7 @@
     li {
       display: inline-block;
       padding: 5px 10px 5px 10px;
-      border-right-width: 2px;
+      border-right-width: 1px;
       border-right-style: solid;
       border-right-color: #ffffff; 
 
@@ -30,8 +30,12 @@
   .header {
     .logo {
       margin: 25px 0px 0px 10px;
-      width: 100px;
-      height: 80px;
+      width: 85px;
+      height: 70px;
+    }
+
+    .login-button {
+      margin: 0px 5px 0px 0px;
     }
 
     .header-icons {
