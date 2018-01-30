@@ -11,7 +11,7 @@ import Header from '../../objects/Header/index';
 // Actions
 import { isAuthentication } from "../../actions/baseActions";
 
-// Local Modules
+// Styles
 import './index.css';
 
 

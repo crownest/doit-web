@@ -10,7 +10,7 @@ import {
 } from "../../actions/baseActions";
 import { updateTask } from "../../actions/taskActions";
 
-// Locale Modules
+// Styles
 import './index.css'
 
 
@@ -19,8 +19,8 @@ export default class TaskUpdateForm extends React.Component {
     super(props);
 
     this.state = {
-      title: "",
-      description: "",
+      title: props.title,
+      description: props.description,
       errors: {}
     };
 
@@ -29,13 +29,6 @@ export default class TaskUpdateForm extends React.Component {
     this.setData = this.setData.bind(this);
     this.setErrors = this.setErrors.bind(this);
     this.onReset = this.onReset.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      title: nextProps.title,
-      description: nextProps.description
-    });
   }
 
   onChange = (e) => {

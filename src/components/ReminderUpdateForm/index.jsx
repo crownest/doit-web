@@ -12,7 +12,7 @@ import {
 } from "../../actions/baseActions";
 import { updateReminder } from '../../actions/reminderActions'
 
-// Local Modules
+// Styles
 import './index.css'
 import '../../../node_modules/react-datetime/css/react-datetime.css'
 

@@ -2,7 +2,7 @@
 import React from "react";
 import Moment from 'moment';
 
-// Local Modules
+// Styles
 import './index.css'
 
 

@@ -9,7 +9,7 @@ import {
 } from "../../actions/baseActions";
 import { updateUser } from "../../actions/userActions";
 
-// Local Modules
+// Styles
 import './index.css'
 
 
@@ -18,9 +18,9 @@ export default class ChangeInformationsForm extends React.Component {
     super(props);
 
     this.state = {
-      email: "",
-      first_name: "",
-      last_name: "",
+      email: props.email,
+      first_name: props.first_name,
+      last_name: props.last_name,
       errors: {}
     };
 
@@ -29,14 +29,6 @@ export default class ChangeInformationsForm extends React.Component {
     this.setData = this.setData.bind(this);
     this.setErrors = this.setErrors.bind(this);
     this.onReset = this.onReset.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      email: nextProps.email,
-      first_name: nextProps.first_name,
-      last_name: nextProps.last_name
-    });
   }
 
   onChange = (e) => {

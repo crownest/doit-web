@@ -11,7 +11,7 @@ import {
 } from "../../actions/baseActions";
 import { createTask } from "../../actions/taskActions";
 
-// Locale Modules
+// Styles
 import './index.css'
 
 

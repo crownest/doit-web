@@ -8,7 +8,7 @@ import {
 } from "../../actions/baseActions";
 import { deleteUserImage } from "../../actions/userActions";
 
-// Local Modules
+// Styles
 import "./index.css"
 
 

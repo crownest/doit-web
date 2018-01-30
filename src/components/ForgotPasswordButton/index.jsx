@@ -2,8 +2,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// Local Modules
+// Styles
 import './index.css';
+
 
 var styles = {
   main: {

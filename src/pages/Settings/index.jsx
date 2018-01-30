@@ -3,6 +3,7 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
 // Components
+import Loader from '../../components/Loader/index';
 import UserImage from '../../components/UserImage/index';
 
 // Objects
@@ -16,7 +17,7 @@ import {
 } from "../../actions/baseActions";
 import { retrieveUser } from "../../actions/userActions";
 
-// Local Modules
+// Styles
 import './index.css';
 
 
@@ -25,7 +26,8 @@ export default class Settings extends React.Component {
     super();
 
     this.state = {
-      user: {}
+      user: {},
+      isLoading: true
     };
 
     this.setUser = this.setUser.bind(this);
@@ -45,6 +47,8 @@ export default class Settings extends React.Component {
         } else {
           alertify.error("An unexpected error has occurred and try again later.");
         }
+
+        this.setState({ isLoading: false });
       });
     }
   }
@@ -56,11 +60,20 @@ export default class Settings extends React.Component {
   }
 
   render() {
-    const { user } = this.state;
+    const { user, isLoading } = this.state;
 
     if (!isAuthentication()) {
       return (
         <Redirect to="/login/"/>
+      )
+    } else if (isLoading) {
+      return (
+        <div className="container settings-page">
+          <Header></Header>
+          <div className="settings-table">
+            <Loader></Loader>
+          </div>
+        </div>
       )
     } else {
       return(

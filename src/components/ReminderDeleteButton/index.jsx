@@ -9,7 +9,7 @@ import {
 } from "../../actions/baseActions";
 import { deleteReminder } from "../../actions/reminderActions";
 
-// Local Modules
+// Styles
 import "./index.css"
 
 

@@ -10,7 +10,7 @@ import ContactForm from '../../components/ContactForm/index';
 // Actions
 import { url, isAuthentication } from "../../actions/baseActions";
 
-// Local Modules
+// Styles
 import './index.css';
 
 

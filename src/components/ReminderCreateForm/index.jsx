@@ -12,16 +12,17 @@ import {
 } from "../../actions/baseActions";
 import { createReminder } from '../../actions/reminderActions'
 
-// Local Modules
+// Styles
 import './index.css'
 import '../../../node_modules/react-datetime/css/react-datetime.css'
 
+
 export default class ReminderCreateForm extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      task: "",
+      task: props.task_id,
       date: null,
       errors: {}
     };
@@ -30,12 +31,6 @@ export default class ReminderCreateForm extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.setErrors = this.setErrors.bind(this);
     this.onReset = this.onReset.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      task: nextProps.task_id
-    });
   }
 
   onChange = (e) => {

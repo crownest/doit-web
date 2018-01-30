@@ -9,7 +9,7 @@ import {
 } from "../../actions/baseActions";
 import { deleteTask } from "../../actions/taskActions";
 
-// Local Modules
+// Styles
 import "./index.css"
 
 

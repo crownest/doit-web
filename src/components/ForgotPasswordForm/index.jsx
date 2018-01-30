@@ -9,7 +9,7 @@ import {
 } from "../../actions/baseActions";
 import { forgotUserPassword } from "../../actions/userActions";
 
-// Local Modules
+// Styles
 import './index.css'
 
 

@@ -14,7 +14,7 @@ import {
 } from "../../actions/baseActions";
 import { authLogin } from "../../actions/coreActions";
 
-// Local Modules
+// Styles
 import './index.css'
 
 

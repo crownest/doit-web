@@ -6,7 +6,7 @@ import ReminderUpdateForm from '../../components/ReminderUpdateForm/index'
 import ReminderDeleteButton from '../../components/ReminderDeleteButton/index'
 import ReminderRetrieveContent from '../../components/ReminderRetrieveContent/index'
 
-// Local Moduless
+// Styles
 import './index.css';
 
 

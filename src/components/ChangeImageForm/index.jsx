@@ -3,6 +3,7 @@ import React from 'react';
 
 // Components
 import UserImage from '../UserImage/index';
+import Loader from '../../components/Loader/index';
 
 // Actions
 import {
@@ -12,7 +13,7 @@ import {
 } from "../../actions/baseActions";
 import { updateUserImage } from '../../actions/userActions';
 
-// Local Modules
+// Styles
 import './index.css';
 
 
@@ -22,18 +23,14 @@ export default class ChangeImageForm extends React.Component {
 
     this.state = {
       image: null,
-      errors: {}
+      image_src: props.user.image,
+      errors: {},
+      isLoading: false
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onReset = this.onReset.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      image_src: nextProps.user.image
-    });
   }
 
   onChange = (e) => {
@@ -63,13 +60,15 @@ export default class ChangeImageForm extends React.Component {
   onReset = (e) => {
     this.setState({
       image: null,
-      errors: {}
+      errors: {},
+      isLoading: false
     });
   }
 
   onSubmit = (e) => {
     e.preventDefault();
     var image = this.state.image;
+    this.setState({ isLoading: true });
 
     updateUserImage(image, (response) => {
       if (response) {
@@ -87,11 +86,13 @@ export default class ChangeImageForm extends React.Component {
         this.onReset();
         alertify.error("An unexpected error has occurred and try again later.");
       }
+
+      this.setState({ isLoading: false });
     });
   }
 
   render() {
-    const { image_src, errors } = this.state;
+    const { image_src, errors, isLoading } = this.state;
 
     return(
       <form id="change-image-form" onSubmit={this.onSubmit} onReset={this.onReset}>
@@ -111,7 +112,12 @@ export default class ChangeImageForm extends React.Component {
             )}
           </div>
         }
-        <button type="submit" className="change-image-button">CHANGE</button>
+        {isLoading ?
+          <button type="submit" className="change-image-button" disabled>
+            <Loader></Loader>
+          </button> :
+          <button type="submit" className="change-image-button">CHANGE</button>
+        }
       </form>
     );
   }

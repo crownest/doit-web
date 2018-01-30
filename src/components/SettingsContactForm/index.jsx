@@ -9,7 +9,7 @@ import {
 } from "../../actions/baseActions";
 import { createContact } from "../../actions/coreActions";
 
-// Local Modules
+// Styles
 import './index.css'
 
 
@@ -18,10 +18,10 @@ export default class SettingsContactForm extends React.Component {
     super(props);
 
     this.state = {
-      first_name: "",
-      last_name: "",
-      email: "",
-      message: "",
+      first_name: props.first_name,
+      last_name: props.last_name,
+      email: props.email,
+      message: props.message,
       errors: {}
     };
 
@@ -29,14 +29,6 @@ export default class SettingsContactForm extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.setErrors = this.setErrors.bind(this);
     this.onReset = this.onReset.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      email: nextProps.email,
-      first_name: nextProps.first_name,
-      last_name: nextProps.last_name
-    });
   }
 
   onChange = (e) => {

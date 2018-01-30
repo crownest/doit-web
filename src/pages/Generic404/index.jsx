@@ -4,7 +4,7 @@ import React from 'react';
 // Components
 import Logo from '../../components/Logo/index';
 
-// Local Modules
+// Styles
 import './index.css';
 
 

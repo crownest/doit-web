@@ -5,7 +5,7 @@ import SimpleLineIcon from 'react-simple-line-icons';
 // Actions
 import { url } from '../../actions/baseActions' 
 
-// Local Modules
+// Styles
 import './index.css';
 
 

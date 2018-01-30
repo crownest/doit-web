@@ -3,19 +3,22 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 
 // Components
+import Loader from '../../components/Loader/index';
 import UserImage from '../../components/UserImage/index';
 import SettingsContactForm from '../../components/SettingsContactForm/index';
 
 // Objects
 import Header from '../../objects/Header/index';
 
-// Local Modules
+// Actions
 import {
   alertify,
   HTTP_200_OK,
   isAuthentication
 } from "../../actions/baseActions";
 import { retrieveUser } from "../../actions/userActions";
+
+// Styles
 import './index.css';
 
 
@@ -24,7 +27,8 @@ export default class SettingsContact extends React.Component {
     super();
 
     this.state = {
-      user: {}
+      user: {},
+      isLoading: true
     };
 
     this.setUser = this.setUser.bind(this);
@@ -44,6 +48,8 @@ export default class SettingsContact extends React.Component {
         } else {
           alertify.error("An unexpected error has occurred and try again later.");
         }
+
+        this.setState({ isLoading: false });
       });
     }
   }
@@ -55,11 +61,20 @@ export default class SettingsContact extends React.Component {
   }
 
   render() {
-    const { user } = this.state;
+    const { user, isLoading } = this.state;
 
     if (!isAuthentication()) {
       return (
         <Redirect to="/login/"/>
+      )
+    } else if (isLoading) {
+      return (
+        <div className="container settingscontact-page">
+          <Header></Header>
+          <div className="settingscontact-table">
+            <Loader></Loader>
+          </div>
+        </div>
       )
     } else {
       return (

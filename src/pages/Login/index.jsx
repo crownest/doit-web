@@ -10,7 +10,7 @@ import BackendButton from '../../components/BackendButton/index';
 // Actions
 import { isAuthentication } from "../../actions/baseActions";
 
-// Local Modules
+// Styles
 import './index.css';
 
 

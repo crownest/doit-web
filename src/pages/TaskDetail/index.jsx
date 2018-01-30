@@ -3,6 +3,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 
 // Components
+import Loader from '../../components/Loader/index';
 import UserImage from '../../components/UserImage/index';
 import TaskUpdateForm from '../../components/TaskUpdateForm/index'
 import ReminderCreateForm from '../../components/ReminderCreateForm/index'
@@ -21,7 +22,7 @@ import { retrieveUser } from "../../actions/userActions";
 import { retrieveTask } from "../../actions/taskActions";
 
 
-// Local Modules
+// Styles
 import './index.css';
 
 
@@ -36,7 +37,8 @@ export default class TaskDetail extends React.Component {
         title: "",
         description: "",
         reminders: []
-      }
+      },
+      isLoading: true
     };
 
     this.setTask = this.setTask.bind(this);
@@ -73,6 +75,8 @@ export default class TaskDetail extends React.Component {
           alertify.error("An unexpected error has occurred and try again later.");
           this.setRedirect();
         }
+
+        this.setState({ isLoading: false });
       });
     }
   }
@@ -96,7 +100,7 @@ export default class TaskDetail extends React.Component {
   }
 
   render() {
-    const { redirect, user, task } = this.state;
+    const { redirect, user, task, isLoading } = this.state;
 
     if (!isAuthentication()) {
       return (
@@ -105,6 +109,15 @@ export default class TaskDetail extends React.Component {
     } else if (redirect) {
       return (
         <Redirect to="/tasks/"/>
+      )
+    } else if (isLoading) {
+      return (
+        <div className="container taskdetail-page">
+          <Header></Header>
+          <div className="taskdetail-table">
+            <Loader></Loader>
+          </div>
+        </div>
       )
     } else {
       let reminder_content = null;

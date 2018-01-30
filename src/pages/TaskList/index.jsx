@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { Scrollbars } from 'react-custom-scrollbars';
 
 // Components
+import Loader from '../../components/Loader/index';
 import UserImage from '../../components/UserImage/index';
 import TaskCreateButton from '../../components/TaskCreateButton/index';
 
@@ -21,7 +22,7 @@ import {
 import { retrieveUser } from "../../actions/userActions";
 import { listTask } from "../../actions/taskActions";
 
-// Local Modules
+// Styles
 import './index.css';
 
 
@@ -31,7 +32,8 @@ export default class TaskList extends React.Component {
 
     this.state = {
       user: {},
-      tasks: []
+      tasks: [],
+      isLoading: true
     };
 
     this.setTasks = this.setTasks.bind(this);
@@ -64,6 +66,8 @@ export default class TaskList extends React.Component {
         } else {
           alertify.error("An unexpected error has occurred and try again later.");
         }
+
+        this.setState({ isLoading: false });
       });
     }
   }
@@ -81,11 +85,20 @@ export default class TaskList extends React.Component {
   }
 
   render() {
-    const { user, tasks } = this.state;
+    const { user, tasks, isLoading } = this.state;
 
     if (!isAuthentication()) {
       return (
         <Redirect to="/login/"/>
+      )
+    } else if (isLoading) {
+      return (
+        <div className="container tasklist-page">
+          <Header></Header>
+          <div className="tasklist-table">
+            <Loader></Loader>
+          </div>
+        </div>
       )
     } else {
       let tasklist_content = null;
@@ -96,7 +109,7 @@ export default class TaskList extends React.Component {
         tasklist_content = <TaskListEmptyContent></TaskListEmptyContent>;
       }
 
-      return(
+      return (
         <div className="container tasklist-page">
           <Header></Header>
           <UserImage image_src={user.image_128x128}></UserImage>
@@ -115,7 +128,7 @@ export default class TaskList extends React.Component {
             </div>
           </div>
         </div>
-      );
+      )
     }
   }
 }

@@ -1,7 +1,7 @@
 // Packages
 import React from 'react';
 
-// Local Moduless
+// Styles
 import './index.css';
 
 
