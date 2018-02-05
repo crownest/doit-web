@@ -11,7 +11,7 @@ export default class Loader extends React.Component {
     return(
       <div className="loader">
         <SyncLoader
-          color={'#36d7b7'}
+          color={'#9C00E2'}
           loading={this.props.isLoading}
         />
       </div>
